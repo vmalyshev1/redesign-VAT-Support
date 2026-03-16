@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:mobile="http://www.baidu.com/schemas/sitemap-mobile/1/">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://bakode.cn/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- EAN Products Page -->
+  <url>
+    <loc>https://bakode.cn/ean-number-gtin-and-barcode</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- Free Test Page -->
+  <url>
+    <loc>https://bakode.cn/test-ean-gtin</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- Compliance Guide -->
+  <url>
+    <loc>https://bakode.cn/barcode-compliance-guide</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- 2D Barcodes Future -->
+  <url>
+    <loc>https://bakode.cn/2d-barcodes-zh</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- Warranty Page -->
+  <url>
+    <loc>https://bakode.cn/our-warranty</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://bakode.cn/about-bakode-china</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <mobile:mobile type="pc,mobile"/>
+  </url>
+
+</urlset>

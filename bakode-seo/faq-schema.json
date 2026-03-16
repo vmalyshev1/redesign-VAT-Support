@@ -1,0 +1,46 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "在哪里可以购买正品EAN条形码？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bakode.cn 是国际条形码网络的认证会员，提供正品 EAN-13 和 UPC 条形码，购买后 3 分钟内通过电子邮件送达，附带所有权证书，无需年度许可费。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Bakode的EAN可在亚马逊和天猫国际使用吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。我们的 EAN 条码符合国际条形码标准，兼容亚马逊、天猫国际、eBay、速卖通等主要电商平台（以各平台最新规则为准）。每个编号在出售前都经过非法使用检查，确保洁净可用。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "购买EAN条形码需要支付年费吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "不需要。与 GS1 租赁模式不同，Bakode 提供一次性买断服务，无年度许可费，条形码永久归您所有，可自由转让给他人或用于任何产品。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以先试用再购买吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以。Bakode 提供免费测试 EAN/GTIN 号码，您可以在购买前验证其与目标平台（亚马逊、天猫等）的兼容性，确认没有问题后再做决定。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "EAN条形码和UPC条形码有什么区别？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EAN-13是13位数字编码，主要用于欧洲和亚洲市场。UPC-A是12位数字编码，主要用于北美市场。两者都是GTIN标准的一部分，Bakode同时提供这两种编码。"
+      }
+    }
+  ]
+}

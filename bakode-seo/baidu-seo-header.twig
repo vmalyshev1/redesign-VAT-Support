@@ -1,0 +1,43 @@
+{# 
+  BAIDU SEO HEADER FOR BAKODE.CN - OpenCart 4
+  Location: catalog/view/template/common/header.twig
+  Add this code inside <head> section, after existing meta tags
+#}
+
+{# Baidu Verification - Replace YOUR_VERIFICATION_CODE with actual code from ziyuan.baidu.com #}
+<meta name="baidu-site-verification" content="YOUR_VERIFICATION_CODE" />
+
+{# Baidu SEO Meta Tags #}
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+<meta name="baiduspider" content="index, follow" />
+<meta name="applicable-device" content="pc,mobile" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+
+{# Canonical URL - Prevents duplicate content #}
+<link rel="canonical" href="{{ canonical }}" />
+
+{# Chinese Language Declaration #}
+<meta http-equiv="Content-Language" content="zh-CN" />
+<meta name="language" content="Chinese" />
+
+{# WeChat/Weibo Social Meta Tags #}
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Bakode.cn - 正品EAN条形码" />
+<meta property="og:title" content="{{ title }}" />
+<meta property="og:description" content="{{ description }}" />
+<meta property="og:url" content="{{ canonical }}" />
+<meta property="og:image" content="https://bakode.cn/image/catalog/data/codes.jpg" />
+<meta property="og:locale" content="zh_CN" />
+
+{# WeChat Specific #}
+<meta name="weixin:timeline_title" content="{{ title }}" />
+<meta name="weixin:description" content="{{ description }}" />
+
+{# Weibo Specific #}
+<meta name="weibo:article:title" content="{{ title }}" />
+<meta name="weibo:article:description" content="{{ description }}" />
+
+{# DNS Prefetch for China CDNs #}
+<link rel="dns-prefetch" href="//cdn.bootcdn.net" />
+<link rel="dns-prefetch" href="//lib.baomitu.com" />

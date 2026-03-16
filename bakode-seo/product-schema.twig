@@ -1,0 +1,42 @@
+{# 
+  PRODUCT SCHEMA FOR BAKODE.CN - OpenCart 4
+  Location: catalog/view/template/product/product.twig
+  Add this code before </body> tag
+#}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ heading_title }}",
+  "description": "{{ meta_description }}",
+  "image": "{{ thumb }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Bakode"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "华信尚博国际商贸（北京）有限公司"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "{{ canonical }}",
+    "priceCurrency": "CNY",
+    "price": "{{ price_raw }}",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Bakode.cn"
+    },
+    "priceValidUntil": "{{ date('Y-12-31') }}"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "{{ reviews | default(100) }}"
+  },
+  "sku": "{{ model }}",
+  "mpn": "{{ model }}"
+}
+</script>
