@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - VAT.SUPPORT</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{--teal-50:#f0fdfa;--teal-100:#ccfbf1;--teal-200:#99f6e4;--teal-300:#5eead4;--teal-400:#2dd4bf;--teal-500:#14b8a6;--teal-600:#0d9488;--teal-700:#0f766e;--teal-800:#115e59;--teal-900:#134e4a;--teal-950:#042f2e;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;color:var(--slate-900);line-height:1.6}
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;color:var(--slate-900);text-decoration:none}.nav-logo svg{width:32px;height:32px;color:var(--teal-600)}
+    .nav-links{display:flex;gap:2rem}.nav-links a{font-size:0.9rem;font-weight:500;color:var(--slate-700);text-decoration:none}
+    .btn-nav{padding:0.625rem 1.25rem;font-size:0.875rem;font-weight:600;background:var(--teal-600);color:white;border:none;border-radius:8px}
+    .page-hero{background:linear-gradient(135deg,var(--slate-900) 0%,var(--teal-950) 100%);padding:5rem 1.5rem;text-align:center;position:relative}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px}
+    .page-hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+    .breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}.breadcrumb a{color:var(--teal-300);text-decoration:none}
+    .page-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:600;color:white;margin-bottom:1rem}.page-hero h1 em{font-family:'DM Serif Display',serif;font-style:italic;color:var(--teal-300)}
+    .page-hero p{font-size:1.125rem;color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto}
+    .content-section{padding:4rem 1.5rem;max-width:900px;margin:0 auto}
+    .content-section h2{font-size:1.75rem;font-weight:600;color:var(--slate-900);margin-bottom:1rem}.content-section h2 em{font-family:'DM Serif Display',serif;font-style:italic;color:var(--teal-600)}
+    .content-section p{color:var(--slate-600);margin-bottom:1.5rem;line-height:1.8}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2rem;background:var(--slate-50);border-radius:12px;margin:2rem 0;text-align:center}
+    .stat-item h3{font-size:2rem;font-weight:700;color:var(--teal-600);margin:0}.stat-item p{font-size:0.85rem;color:var(--slate-500);margin:0.25rem 0 0}
+    .feature-box{background:var(--teal-50);border:1px solid var(--teal-100);border-radius:12px;padding:1.5rem;margin:2rem 0}.feature-box h4{font-size:1rem;font-weight:600;color:var(--teal-700);margin-bottom:0.5rem}.feature-box p{font-size:0.9rem;color:var(--teal-800);margin:0}
+    .info-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0}
+    .info-card{background:white;border:1px solid var(--slate-200);border-radius:12px;padding:1.5rem;transition:all 0.3s}.info-card:hover{border-color:var(--teal-300);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+    .info-card-icon{width:40px;height:40px;background:var(--teal-50);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--teal-600)}
+    .info-card h4{font-size:1rem;font-weight:600;color:var(--slate-900);margin-bottom:0.5rem}.info-card p{font-size:0.875rem;color:var(--slate-500);margin:0}
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin:2rem 0}
+    .team-member{text-align:center}
+    .team-avatar{width:100px;height:100px;background:linear-gradient(135deg,var(--teal-600) 0%,var(--teal-700) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:600;color:white;margin:0 auto 1rem}
+    .team-member h4{font-size:1rem;font-weight:600;color:var(--slate-900);margin-bottom:0.25rem}.team-member p{font-size:0.85rem;color:var(--slate-500);margin:0}
+    .cta-section{background:linear-gradient(135deg,var(--slate-900) 0%,var(--teal-950) 100%);padding:4rem 1.5rem;text-align:center;border-radius:16px;margin:3rem 0}
+    .cta-section h2{color:white;font-size:1.75rem;margin-bottom:0.75rem}.cta-section p{color:rgba(255,255,255,0.6);margin-bottom:1.5rem}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal-500);color:white;font-weight:600;padding:0.875rem 1.75rem;border-radius:10px;text-decoration:none;transition:all 0.25s}.btn-primary:hover{background:var(--teal-400);transform:translateY(-2px)}
+    @media(max-width:768px){.stats-row,.team-grid{grid-template-columns:repeat(2,1fr)}.info-cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>VAT.SUPPORT</a>
+    <div class="nav-links"><a href="#">Services</a><a href="#">Countries</a><a href="#">Pricing</a><a href="#">About</a></div>
+    <button class="btn-nav">Get Started</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#">Home</a><span>›</span><span>About</span></div>
+      <h1>Global VAT expertise, <em>personal service</em></h1>
+      <p>We're a team of tax professionals, technologists, and compliance specialists united by one mission: making international VAT simple.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="stats-row">
+      <div class="stat-item"><h3>2018</h3><p>Founded</p></div>
+      <div class="stat-item"><h3>50+</h3><p>Countries covered</p></div>
+      <div class="stat-item"><h3>2,400+</h3><p>Clients worldwide</p></div>
+      <div class="stat-item"><h3>£2.4M</h3><p>VAT recovered</p></div>
+    </div>
+
+    <h2>Our <em>story</em></h2>
+    <p>VAT.support was founded by tax professionals who saw firsthand how complex cross-border VAT had become — and how underserved growing businesses were. Traditional accounting firms charged premium rates for basic compliance, while DIY solutions left companies exposed.</p>
+    <p>We built VAT.support to be different: expert-led services at transparent prices, powered by technology that keeps you compliant without the complexity. Today, we help thousands of businesses navigate VAT in over 50 countries.</p>
+
+    <div class="feature-box">
+      <h4>Our Mission</h4>
+      <p>To remove VAT complexity as a barrier to international growth. Every business should be able to sell globally without worrying about tax compliance.</p>
+    </div>
+
+    <h2>What sets us <em>apart</em></h2>
+    <div class="info-cards">
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h4>Named Consultants</h4><p>You work with a dedicated VAT expert who knows your business.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Accredited Agents</h4><p>We're HMRC-approved and work with local agents in every jurisdiction.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Technology-First</h4><p>Our platform automates the tedious parts of compliance.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Transparent Pricing</h4><p>Fixed fees for all services. No hidden charges.</p></div>
+    </div>
+
+    <h2>Our <em>leadership team</em></h2>
+    <div class="team-grid">
+      <div class="team-member"><div class="team-avatar">JM</div><h4>James Mitchell</h4><p>CEO & Co-Founder</p></div>
+      <div class="team-member"><div class="team-avatar">SR</div><h4>Sarah Reynolds</h4><p>Head of VAT Services</p></div>
+      <div class="team-member"><div class="team-avatar">MK</div><h4>Michael Kruger</h4><p>CTO</p></div>
+      <div class="team-member"><div class="team-avatar">LP</div><h4>Laura Petrov</h4><p>Head of Client Success</p></div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Ready to simplify your VAT?</h2>
+      <p>Join 2,400+ businesses that trust VAT.support for their global tax compliance.</p>
+      <a href="#" class="btn-primary">Get started today <span>→</span></a>
+    </div>
+  </div>
+</body>
+</html>

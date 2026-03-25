@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK VAT Guide - VAT.SUPPORT</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{--teal-50:#f0fdfa;--teal-100:#ccfbf1;--teal-200:#99f6e4;--teal-300:#5eead4;--teal-400:#2dd4bf;--teal-500:#14b8a6;--teal-600:#0d9488;--teal-700:#0f766e;--teal-800:#115e59;--teal-900:#134e4a;--teal-950:#042f2e;--slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;--slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;--slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a}
+    *{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;color:var(--slate-900);line-height:1.6}
+    .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.25rem;color:var(--slate-900);text-decoration:none}.nav-logo svg{width:32px;height:32px;color:var(--teal-600)}
+    .nav-links{display:flex;gap:2rem}.nav-links a{font-size:0.9rem;font-weight:500;color:var(--slate-700);text-decoration:none}
+    .btn-nav{padding:0.625rem 1.25rem;font-size:0.875rem;font-weight:600;background:var(--teal-600);color:white;border:none;border-radius:8px}
+    .page-hero{background:linear-gradient(135deg,var(--slate-900) 0%,var(--teal-950) 100%);padding:5rem 1.5rem;text-align:center;position:relative}
+    .page-hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:40px 40px}
+    .page-hero-inner{position:relative;z-index:2;max-width:800px;margin:0 auto}
+    .breadcrumb{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:1.5rem}.breadcrumb a{color:var(--teal-300);text-decoration:none}
+    .page-hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:600;color:white;margin-bottom:1rem}.page-hero h1 em{font-family:'DM Serif Display',serif;font-style:italic;color:var(--teal-300)}
+    .page-hero p{font-size:1.125rem;color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto}
+    .content-section{padding:4rem 1.5rem;max-width:900px;margin:0 auto}
+    .content-section h2{font-size:1.75rem;font-weight:600;color:var(--slate-900);margin:2.5rem 0 1rem}.content-section h2 em{font-family:'DM Serif Display',serif;font-style:italic;color:var(--teal-600)}
+    .content-section p{color:var(--slate-600);margin-bottom:1.5rem;line-height:1.8}
+    .content-section ul{margin:1.5rem 0;padding-left:1.5rem;color:var(--slate-600)}.content-section li{margin-bottom:0.75rem;line-height:1.7}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2rem;background:var(--slate-50);border-radius:12px;margin:2rem 0;text-align:center}
+    .stat-item h3{font-size:2rem;font-weight:700;color:var(--teal-600);margin:0}.stat-item p{font-size:0.85rem;color:var(--slate-500);margin:0.25rem 0 0}
+    .feature-box{background:var(--teal-50);border:1px solid var(--teal-100);border-radius:12px;padding:1.5rem;margin:2rem 0}.feature-box h4{font-size:1rem;font-weight:600;color:var(--teal-700);margin-bottom:0.5rem}.feature-box p{font-size:0.9rem;color:var(--teal-800);margin:0}
+    .info-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.9rem}
+    .info-table th{background:var(--slate-50);font-weight:600;color:var(--slate-900);text-align:left;padding:1rem;border-bottom:2px solid var(--slate-200)}
+    .info-table td{padding:1rem;border-bottom:1px solid var(--slate-200);color:var(--slate-600)}.info-table tr:hover td{background:var(--slate-50)}
+    .info-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin:2rem 0}
+    .info-card{background:white;border:1px solid var(--slate-200);border-radius:12px;padding:1.5rem;transition:all 0.3s}.info-card:hover{border-color:var(--teal-300);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+    .info-card-icon{width:40px;height:40px;background:var(--teal-50);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;color:var(--teal-600)}
+    .info-card h4{font-size:1rem;font-weight:600;color:var(--slate-900);margin-bottom:0.5rem}.info-card p{font-size:0.875rem;color:var(--slate-500);margin:0}
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:2rem 0}
+    .process-step{text-align:center;padding:1.5rem}
+    .process-step-num{width:48px;height:48px;background:var(--teal-600);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;margin:0 auto 1rem}
+    .process-step h4{font-size:1rem;font-weight:600;margin-bottom:0.5rem}.process-step p{font-size:0.875rem;color:var(--slate-500)}
+    .cta-section{background:linear-gradient(135deg,var(--slate-900) 0%,var(--teal-950) 100%);padding:4rem 1.5rem;text-align:center;border-radius:16px;margin:3rem 0}
+    .cta-section h2{color:white;font-size:1.75rem;margin-bottom:0.75rem}.cta-section p{color:rgba(255,255,255,0.6);margin-bottom:1.5rem}
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--teal-500);color:white;font-weight:600;padding:0.875rem 1.75rem;border-radius:10px;text-decoration:none}.btn-primary:hover{background:var(--teal-400)}
+    @media(max-width:768px){.stats-row,.process-steps{grid-template-columns:repeat(2,1fr)}.info-cards{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="nav-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>VAT.SUPPORT</a>
+    <div class="nav-links"><a href="#">Services</a><a href="#">Countries</a><a href="#">Pricing</a><a href="#">About</a></div>
+    <button class="btn-nav">Get Started</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><a href="#">Home</a><span>›</span><a href="#">Countries</a><span>›</span><span>United Kingdom</span></div>
+      <h1>UK VAT <em>compliance</em></h1>
+      <p>Everything you need to know about VAT registration, filing, and compliance in the United Kingdom — including post-Brexit requirements.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="stats-row">
+      <div class="stat-item"><h3>20%</h3><p>Standard VAT rate</p></div>
+      <div class="stat-item"><h3>£85k</h3><p>Registration threshold</p></div>
+      <div class="stat-item"><h3>Quarterly</h3><p>Filing frequency</p></div>
+      <div class="stat-item"><h3>MTD</h3><p>Digital filing required</p></div>
+    </div>
+
+    <h2>VAT in the <em>United Kingdom</em></h2>
+    <p>The UK operates a robust VAT system administered by HM Revenue & Customs (HMRC). Since Brexit, the rules for EU businesses selling into the UK have changed significantly.</p>
+
+    <div class="feature-box">
+      <h4>Post-Brexit Changes</h4>
+      <p>Since January 2021, EU businesses selling goods to UK consumers must register for UK VAT if they exceed £0 in sales (no threshold). The previous distance selling thresholds no longer apply.</p>
+    </div>
+
+    <h2>UK VAT rates</h2>
+    <table class="info-table">
+      <thead><tr><th>Rate</th><th>Percentage</th><th>Applies to</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Standard rate</strong></td><td>20%</td><td>Most goods and services</td></tr>
+        <tr><td><strong>Reduced rate</strong></td><td>5%</td><td>Home energy, children's car seats</td></tr>
+        <tr><td><strong>Zero rate</strong></td><td>0%</td><td>Food, books, children's clothing</td></tr>
+        <tr><td><strong>Exempt</strong></td><td>N/A</td><td>Insurance, education, health services</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Who needs to register?</h2>
+    <ul>
+      <li><strong>UK businesses:</strong> Your taxable turnover exceeds £85,000 in any 12-month period</li>
+      <li><strong>EU businesses:</strong> You sell goods directly to UK consumers (no threshold post-Brexit)</li>
+      <li><strong>Non-EU businesses:</strong> You sell goods stored in the UK or provide certain digital services</li>
+    </ul>
+
+    <h2>Filing requirements</h2>
+    <div class="info-cards">
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h4>Quarterly Returns</h4><p>Most businesses file VAT returns every 3 months, due 1 month and 7 days after quarter end.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h4>Making Tax Digital</h4><p>All VAT-registered businesses must keep digital records and file using MTD-compatible software.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Payment Deadlines</h4><p>VAT owed must be paid by the filing deadline. Late payments incur interest and penalties.</p></div>
+      <div class="info-card"><div class="info-card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div><h4>Record Keeping</h4><p>Maintain VAT records for at least 6 years. HMRC can request access at any time.</p></div>
+    </div>
+
+    <h2>How we help with <em>UK VAT</em></h2>
+    <div class="process-steps">
+      <div class="process-step"><div class="process-step-num">1</div><h4>Registration</h4><p>We register you with HMRC and set up MTD.</p></div>
+      <div class="process-step"><div class="process-step-num">2</div><h4>Ongoing Filing</h4><p>Quarterly returns prepared and submitted on time.</p></div>
+      <div class="process-step"><div class="process-step-num">3</div><h4>Compliance Alerts</h4><p>Automated reminders for deadlines and changes.</p></div>
+      <div class="process-step"><div class="process-step-num">4</div><h4>Expert Support</h4><p>Dedicated UK VAT specialist available.</p></div>
+    </div>
+
+    <div class="cta-section">
+      <h2>Need help with UK VAT?</h2>
+      <p>Whether you're registering for the first time or need ongoing compliance support, we've got you covered.</p>
+      <a href="#" class="btn-primary">Speak to a UK VAT expert <span>→</span></a>
+    </div>
+  </div>
+</body>
+</html>
