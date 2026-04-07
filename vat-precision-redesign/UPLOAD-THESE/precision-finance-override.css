@@ -1,0 +1,28 @@
+/*
+ * VAT.SUPPORT - Google Fonts Blocker + System Font Override
+ * ==========================================================
+ * MINIMAL CSS - Only blocks Google Fonts and sets system fonts
+ * Does NOT override any Bootstrap or theme styling
+ * China/Baidu SEO friendly - NO external font requests
+ */
+
+/* Block any Google Fonts @import that might slip through */
+@font-face {
+  font-family: 'Google Sans';
+  src: local('Arial');
+}
+
+/* System font stack for China compatibility */
+:root {
+  --font-system: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Apply system fonts to body - LOW specificity, won't break existing styles */
+body {
+  font-family: var(--font-system);
+}
+
+/* Headings use same system stack */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-system);
+}
