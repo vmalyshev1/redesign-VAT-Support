@@ -1,0 +1,48 @@
+/*
+ * VAT.SUPPORT - Site-wide Style Fixes
+ * Upload to: /wp-content/themes/vat-child/precision-finance-override.css
+ */
+
+/* Hide theme jumbotron title on blog post pages */
+.page-template-default .py-5.py-xl-6.bg-light-subtle {
+  display: none !important;
+}
+
+/* Fix mobile menu bullet points */
+.offcanvas .sub-menu,
+.offcanvas .offcanvas-menu-list .sub-menu {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
+}
+.offcanvas .sub-menu li {
+  list-style: none !important;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 767px) {
+  [style*="padding:80px 20px"] { padding: 48px 20px !important; }
+  [style*="padding:64px 20px"] { padding: 40px 20px !important; }
+  [style*="padding:80px 24px"] { padding: 48px 20px !important; }
+  [style*="padding:96px 24px"] { padding: 56px 20px !important; }
+  [style*="gap:48px"] { gap: 24px !important; }
+  [style*="gap:64px"] { gap: 24px !important; }
+  [style*="font-size:52px"] { font-size: clamp(28px, 8vw, 42px) !important; }
+  [style*="font-size:34px"] { font-size: clamp(22px, 6vw, 30px) !important; }
+  [style*="font-size:36px"] { font-size: clamp(22px, 6vw, 30px) !important; }
+}
+
+/* Grid overlay styling */
+.hero-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 1;
+}
