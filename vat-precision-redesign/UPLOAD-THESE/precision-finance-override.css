@@ -914,3 +914,53 @@ select:focus {
     justify-content: center !important;
   }
 }
+
+
+/* ══════════════════════════════════════════════════════════════
+   AMAZON PAGE HERO - Match Homepage Style
+   ══════════════════════════════════════════════════════════════ */
+body.page-amazon .wp-block-cover,
+body.page-amazon .hero,
+body.page-amazon .hero-section,
+.page-id-amazon .wp-block-cover,
+.single-amazon .wp-block-cover,
+body[class*="amazon"] .wp-block-cover:first-of-type {
+  position: relative !important;
+  background: linear-gradient(135deg, var(--slate-900) 0%, var(--teal-950) 50%, var(--slate-900) 100%) !important;
+  overflow: hidden !important;
+}
+
+/* Grid pattern for Amazon page hero */
+body.page-amazon .wp-block-cover::before,
+body[class*="amazon"] .wp-block-cover:first-of-type::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Accent orb for Amazon page */
+body.page-amazon .wp-block-cover::after,
+body[class*="amazon"] .wp-block-cover:first-of-type::after {
+  content: '' !important;
+  position: absolute !important;
+  width: 600px !important;
+  height: 600px !important;
+  background: radial-gradient(circle, rgba(20,184,166,0.15) 0%, transparent 70%) !important;
+  top: -200px !important;
+  right: -200px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Ensure content stays above grid */
+body.page-amazon .wp-block-cover > *,
+body[class*="amazon"] .wp-block-cover:first-of-type > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
