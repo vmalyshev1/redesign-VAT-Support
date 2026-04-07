@@ -1,87 +1,79 @@
 <?php
-/**
- *            _               _
- *        ___|_|___ ___ _____|_|___ ___
- *       | . | |  _| . |     | |   | . |
- *       |  _|_|___|___|_|_|_|_|_|_|_  |
- *       |_|                       |___|
- *
- *       WELCOME TO THE STARTER THEME!
- *
- *       picostrap.com
- *       livecanvas.com
- */
+/*
+        _               _                  _____        _     _ _     _   _   _                         
+       (_)             | |                | ____|      | |   (_) |   | | | | | |                        
+  _ __  _  ___ ___  ___| |_ _ __ __ _ _ __| |__     ___| |__  _| | __| | | |_| |__   ___ _ __ ___   ___ 
+ | '_ \| |/ __/ _ \/ __| __| '__/ _` | '_ \___ \   / __| '_ \| | |/ _` | | __| '_ \ / _ \ '_ ` _ \ / _ \
+ | |_) | | (_| (_) \__ \ |_| | | (_| | |_) |__) | | (__| | | | | | (_| | | |_| | | |  __/ | | | | |  __/
+ | .__/|_|\___\___/|___/\__|_|  \__,_| .__/____/   \___|_| |_|_|_|\__,_|  \__|_| |_|\___|_| |_| |_|\___|
+ | |                                 | |                                                                
+ |_|                                 |_|                                                                
 
-//// LOAD CONFIGURATION FEATURES ////
-$configuration_file = get_stylesheet_directory() . '/livecanvas/configuration.php';
-if (file_exists($configuration_file))  require_once($configuration_file);
+                                                       
+*************************************** WELCOME TO PICOSTRAP ***************************************
 
-//// ENQUEUE CHILD THEME STYLES ////
-add_action( 'wp_enqueue_scripts', function() {
-    //Picostrap's main style, in its css-output folder
-    wp_enqueue_style( 'picostrap-styles', get_template_directory_uri() . '/css-output/bundle.css', array(), filemtime(get_template_directory() . '/css-output/bundle.css'), 'all' );
-    //child theme style: this very folder's style.css  (default)
-    wp_enqueue_style( 'picostrap-child-styles', get_stylesheet_directory_uri() . '/style.css', array('picostrap-styles'), filemtime(get_stylesheet_directory() . '/style.css'), 'all' );
-    //additional stylesheets enqueued here, as an example
-    //wp_enqueue_style( 'my-extra-styles', get_stylesheet_directory_uri() . '/extra.css', array(), filemtime(get_stylesheet_directory() . '/extra.css'), 'all' );
-}, 100);
+********************* THE BEST WAY TO EXPERIENCE SASS, BOOTSTRAP AND WORDPRESS *********************
 
-//DEQUEUE PICOSTRAP's BOOTSTRAP JS AND ENQUEUE CHILD'S VERSION with the "async" attribute
-add_action( 'wp_enqueue_scripts', function() {
+    PLEASE WATCH THE VIDEOS FOR BEST RESULTS:
+    https://www.youtube.com/playlist?list=PLtyHhWhkgYU8i11wu-5KJDBfA9C-D4Bfl
+
+*/
+
+//LOAD LC CONFIG TO DEFINE FRAMEWORK
+require_once ("livecanvas/configuration.php");
+
+// DE-ENQUEUE PARENT THEME BOOTSTRAP JS BUNDLE
+add_action( 'wp_print_scripts', function(){
     wp_dequeue_script( 'bootstrap5' );
-    wp_enqueue_script( 'bootstrap5', get_stylesheet_directory_uri() . '/js/bootstrap.bundle.min.js', array(), null,  array('strategy' => 'defer', 'in_footer' => true) );
+    //wp_dequeue_script( 'dark-mode-switch' );  //optionally
+}, 100 );
+
+// ENQUEUE THE BOOTSTRAP JS BUNDLE (AND EVENTUALLY MORE LIBS) FROM THE CHILD THEME DIRECTORY
+add_action( 'wp_enqueue_scripts', function() {
+    //enqueue js in footer, defer
+    wp_enqueue_script( 'bootstrap5-childtheme', get_stylesheet_directory_uri() . "/js/bootstrap.bundle.min.js", array(), null, array('strategy' => 'defer', 'in_footer' => true)  );
+    
     //optional: example of how to globally lazyload js files eg lottie player, using defer
-    //wp_enqueue_script( 'lottie-player', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', array(), null, array('strategy' => 'defer', 'in_footer' => true) );
+    //wp_enqueue_script( 'lottie-player', 'https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js', array(), null, array('strategy' => 'defer', 'in_footer' => true)  );
 }, 101);
 
 // HACK HERE: ENQUEUE YOUR CUSTOM JS FILES, IF NEEDED
-add_action( 'wp_enqueue_scripts', function() {
+add_action( 'wp_enqueue_scripts', function() {	   
+    
     // Include custom.js for navbar scroll effect and other interactions
-    wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), '2.0', array('strategy' => 'defer', 'in_footer' => true) );
+    wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), '2.0', array('strategy' => 'defer', 'in_footer' => true) ); 
+
     //UNCOMMENT next 3 rows to load the js file only on one page
     //if (is_page('mypageslug')) {
-    //  wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), null, array('strategy' => 'defer', 'in_footer' => true) );
-    //}
+    //    wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array(/* 'jquery' */), null, array('strategy' => 'defer', 'in_footer' => true) ); 
+    //}  
+
 }, 102);
+
+// VAT Landing template: base CSS (no third-party font CDNs)
+add_action('wp_enqueue_scripts', function () {
+    if (!is_page() || !is_page_template('page-templates/page-vat-landing.php')) {
+        return;
+    }
+    wp_enqueue_style(
+        'vat-landing',
+        get_stylesheet_directory_uri() . '/css/vat-landing.css',
+        array(),
+        '1.0.0'
+    );
+}, 103);
 
 // OPTIONAL: ADD MORE NAV MENUS
 //register_nav_menus( array( 'third' => __( 'Third Menu', 'picostrap' ), 'fourth' => __( 'Fourth Menu', 'picostrap' ), 'fifth' => __( 'Fifth Menu', 'picostrap' ), ) );
-// THEN USE SHORTCODE: [lc_nav_menu theme_location="third" container_class="" container_id="" menu_class="navbar-nav"]
+// THEN USE SHORTCODE:  [lc_nav_menu theme_location="third" container_class="" container_id="" menu_class="navbar-nav"]
 
 // OPTIONAL: FOR SECURITY: DISABLE APPLICATION PASSWORDS. Uncomment if needed
 //add_filter( 'wp_is_application_passwords_available', '__return_false' );
 
 // ADD YOUR CUSTOM PHP CODE DOWN BELOW /////////////////////////
 
-// ============================================================
-// BLOCK GOOGLE FONTS - China/Baidu SEO Compatibility
-// This removes ALL Google Fonts requests from WordPress
-// ============================================================
-add_action('wp_enqueue_scripts', function() {
-    // Remove Google Fonts from parent theme if enqueued
-    wp_dequeue_style('picostrap-google-fonts');
-    wp_deregister_style('picostrap-google-fonts');
-    wp_dequeue_style('google-fonts');
-    wp_deregister_style('google-fonts');
-}, 9999);
-
-// Block Google Fonts at DNS level (prevents any plugin from loading them)
-add_filter('style_loader_src', function($src) {
-    if (strpos($src, 'fonts.googleapis.com') !== false || strpos($src, 'fonts.gstatic.com') !== false) {
-        return false;
-    }
-    return $src;
-}, 9999);
-
-// Remove Google Fonts from Customizer inline styles
-add_action('wp_head', function() {
-    // Remove any inline @import for Google Fonts
-    echo '<style id="block-google-fonts">@import url("https://fonts.googleapis.com") { display: none !important; }</style>';
-}, 1);
-
-// ============================================================
-// END GOOGLE FONTS BLOCK
-// ============================================================
+// No Google Fonts — system font stacks only (SEO / performance / China-friendly).
+// Add @font-face in sass/_custom.scss if you self-host a font.
 
 // Add theme support for various WordPress features
 add_action('after_setup_theme', function() {
@@ -92,10 +84,13 @@ add_action('after_setup_theme', function() {
         'flex-height' => true,
         'flex-width'  => true,
     ));
+    
     // Add support for post thumbnails
     add_theme_support('post-thumbnails');
+    
     // Add support for title tag
     add_theme_support('title-tag');
+    
     // Add support for HTML5 markup
     add_theme_support('html5', array(
         'search-form',
@@ -108,19 +103,41 @@ add_action('after_setup_theme', function() {
 
 // Register navigation menus
 register_nav_menus(array(
-    'primary'          => __('Primary Menu', 'picostrap'),
-    'footer'           => __('Footer Menu', 'picostrap'),
-    'footer_services'  => __('Footer Services', 'picostrap'),
-    'footer_resources' => __('Footer Resources', 'picostrap'),
-    'footer_company'   => __('Footer Company', 'picostrap'),
+    'primary'           => __('Primary Menu',          'picostrap'),
+    'footer'            => __('Footer Menu',            'picostrap'),
+    'footer_services'   => __('Footer Services',        'picostrap'),
+    'footer_resources'  => __('Footer Resources',       'picostrap'),
+    'footer_company'    => __('Footer Company',         'picostrap'),
 ));
 
 // Add custom body classes for styling
 add_filter('body_class', function($classes) {
     $classes[] = 'vat-support-theme';
+    
     if (is_front_page()) {
         $classes[] = 'homepage';
     }
+
+    // Single template: "VAT Landing (full width)" — category via body classes
+    if (is_page() && is_page_template('page-templates/page-vat-landing.php')) {
+        $classes[] = 'vat-landing';
+        $post = get_queried_object();
+        if ($post instanceof WP_Post) {
+            $classes[] = 'vat-lp--' . sanitize_html_class($post->post_name, 'page');
+            // Optional Page Attribute or custom field: add extra class e.g. campaign / country / blog
+            $variant = get_post_meta($post->ID, '_vat_lp_variant', true);
+            if (is_string($variant) && $variant !== '') {
+                $classes[] = 'vat-lp-variant--' . sanitize_html_class($variant, 'variant');
+            }
+        }
+        if (function_exists('pll_current_language')) {
+            $lang = pll_current_language();
+            if (is_string($lang) && $lang !== '') {
+                $classes[] = 'pll--' . sanitize_html_class($lang, 'lang');
+            }
+        }
+    }
+    
     return $classes;
 });
 
@@ -130,10 +147,13 @@ class WP_Bootstrap_Navwalker_Simple extends Walker_Nav_Menu {
         $classes = empty($item->classes) ? array() : (array) $item->classes;
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
         $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+        
         $output .= '<li' . $class_names . '>';
+        
         $atts = array();
         $atts['href'] = !empty($item->url) ? $item->url : '';
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
+        
         $attributes = '';
         foreach ($atts as $attr => $value) {
             if (!empty($value)) {
@@ -141,12 +161,15 @@ class WP_Bootstrap_Navwalker_Simple extends Walker_Nav_Menu {
                 $attributes .= ' ' . $attr . '="' . $value . '"';
             }
         }
+        
         $title = apply_filters('the_title', $item->title, $item->ID);
+        
         $item_output = $args->before;
-        $item_output .= '<a class="nav-link"' . $attributes . '>';
+        $item_output .= '<a' . $attributes . '>';
         $item_output .= $args->link_before . $title . $args->link_after;
         $item_output .= '</a>';
         $item_output .= $args->after;
+        
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
     }
 }
@@ -188,42 +211,48 @@ add_filter('nav_menu_link_attributes', 'add_additional_class_on_a', 10, 3);
 // Add custom contact form shortcode (basic example)
 add_shortcode('vat_contact_form', function($atts) {
     $atts = shortcode_atts(array(
-        'title'    => 'Get Started Today',
+        'title' => 'Get Started Today',
         'subtitle' => 'Contact us for a free consultation'
     ), $atts);
+    
     ob_start();
     ?>
-    <div class="vat-contact-form">
+    <div class="vat-contact-form bg-light p-5 rounded">
         <h3><?php echo esc_html($atts['title']); ?></h3>
-        <p><?php echo esc_html($atts['subtitle']); ?></p>
-        <form method="post" action="">
-            <div class="form-group mb-3">
-                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+        <p class="text-muted"><?php echo esc_html($atts['subtitle']); ?></p>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Your Name" required>
             </div>
-            <div class="form-group mb-3">
-                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+            <div class="col-md-6">
+                <input type="email" class="form-control" placeholder="Your Email" required>
             </div>
-            <div class="form-group mb-3">
-                <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+            <div class="col-12">
+                <input type="text" class="form-control" placeholder="Company Name">
             </div>
-            <button type="submit" class="btn btn-primary">Send Message</button>
+            <div class="col-12">
+                <textarea class="form-control" rows="4" placeholder="Tell us about your VAT needs..."></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </div>
         </form>
     </div>
     <?php
     return ob_get_clean();
 });
 
-// Register Testimonials Custom Post Type
+// Add custom post types for testimonials (optional)
 add_action('init', function() {
     register_post_type('testimonial', array(
         'labels' => array(
-            'name'          => 'Testimonials',
+            'name' => 'Testimonials',
             'singular_name' => 'Testimonial',
         ),
-        'public'       => true,
-        'has_archive'  => true,
-        'supports'     => array('title', 'editor', 'thumbnail'),
-        'menu_icon'    => 'dashicons-format-quote',
+        'public' => true,
+        'has_archive' => true,
+        'supports' => array('title', 'editor', 'thumbnail'),
+        'menu_icon' => 'dashicons-format-quote',
     ));
 });
 
@@ -232,10 +261,12 @@ add_action('init', function() {
 $chatgpt_simple_file = get_stylesheet_directory() . '/chatgpt/chatgpt-simple.php';
 if (file_exists($chatgpt_simple_file)) {
     require_once $chatgpt_simple_file;
+    
     // Initialize the ChatGPT Simple feature
     add_action('init', function() {
         ChatGPT_Simple_Integration::init();
     });
+    
     // Add admin notice if API key is not configured
     add_action('admin_notices', function() {
         if (current_user_can('manage_options') && !get_option('chatgpt_api_key')) {
@@ -276,6 +307,8 @@ if (is_admin()) {
 }
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
+
+
 
 // ============================================================
 // Fix: Force Polylang language filter on Post Grid (lazy load AJAX)
