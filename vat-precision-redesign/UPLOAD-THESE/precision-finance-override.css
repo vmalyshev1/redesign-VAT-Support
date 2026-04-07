@@ -917,22 +917,24 @@ select:focus {
 
 
 /* ══════════════════════════════════════════════════════════════
-   AMAZON PAGE HERO - Match Homepage Style
+   ALL PAGES HERO - Consistent Dark Gradient + Grid Design
    ══════════════════════════════════════════════════════════════ */
-body.page-amazon .wp-block-cover,
-body.page-amazon .hero,
-body.page-amazon .hero-section,
-.page-id-amazon .wp-block-cover,
-.single-amazon .wp-block-cover,
-body[class*="amazon"] .wp-block-cover:first-of-type {
+.wp-block-cover,
+.wp-block-cover.has-background-dim {
   position: relative !important;
   background: linear-gradient(135deg, var(--slate-900) 0%, var(--teal-950) 50%, var(--slate-900) 100%) !important;
   overflow: hidden !important;
 }
 
-/* Grid pattern for Amazon page hero */
-body.page-amazon .wp-block-cover::before,
-body[class*="amazon"] .wp-block-cover:first-of-type::before {
+/* Override any inline background color/image from WordPress */
+.wp-block-cover .has-background-dim,
+.wp-block-cover .wp-block-cover__background {
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+/* Grid pattern for all hero sections */
+.wp-block-cover::before {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
@@ -944,9 +946,8 @@ body[class*="amazon"] .wp-block-cover:first-of-type::before {
   z-index: 1 !important;
 }
 
-/* Accent orb for Amazon page */
-body.page-amazon .wp-block-cover::after,
-body[class*="amazon"] .wp-block-cover:first-of-type::after {
+/* Accent orb for all hero sections */
+.wp-block-cover::after {
   content: '' !important;
   position: absolute !important;
   width: 600px !important;
@@ -959,8 +960,8 @@ body[class*="amazon"] .wp-block-cover:first-of-type::after {
 }
 
 /* Ensure content stays above grid */
-body.page-amazon .wp-block-cover > *,
-body[class*="amazon"] .wp-block-cover:first-of-type > * {
+.wp-block-cover > *,
+.wp-block-cover .wp-block-cover__inner-container {
   position: relative !important;
   z-index: 2 !important;
 }
