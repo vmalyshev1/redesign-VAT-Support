@@ -1,60 +1,39 @@
 /**
- * VAT.SUPPORT - Hero Fix Script v2
- * Finds ALL green gradient heroes and converts them to dark gradient + grid
+ * VAT.SUPPORT - Hero Fix Script v3 (Safe)
+ * Only targets hero sections with padding 80px or 64px (typical hero padding)
  */
 
 document.addEventListener('DOMContentLoaded', function() {
   
   var darkGradient = 'linear-gradient(135deg, #0f172a 0%, #042f2e 50%, #0f172a 100%)';
   
-  // Check ALL elements for any green-ish gradient
   document.querySelectorAll('*').forEach(function(el) {
     var style = el.getAttribute('style') || '';
     var styleLower = style.toLowerCase();
     
-    // Check for ANY green gradient patterns
-    var hasGreenGradient = (
-      // Hex codes (various green shades)
-      styleLower.includes('#0f2b') ||
-      styleLower.includes('#0a3d') ||
-      styleLower.includes('#0d28') ||
-      styleLower.includes('#0f2') ||
-      styleLower.includes('#0a3') ||
-      styleLower.includes('#0d2') ||
-      styleLower.includes('#1a4') ||
-      styleLower.includes('#0b3') ||
-      styleLower.includes('#0c3') ||
-      styleLower.includes('#0e3') ||
-      styleLower.includes('#104') ||
-      styleLower.includes('#0f3') ||
-      // RGB patterns for green
-      styleLower.includes('rgb(15, 43') ||
-      styleLower.includes('rgb(10, 61') ||
-      styleLower.includes('rgb(13, 40') ||
-      styleLower.includes('rgb(15,43') ||
-      styleLower.includes('rgb(10,61') ||
-      styleLower.includes('rgb(13,40') ||
-      // Check if it's a gradient with greenish tones
-      (styleLower.includes('gradient') && (
-        styleLower.includes('0f2') ||
-        styleLower.includes('0a3') ||
-        styleLower.includes('0d2') ||
-        styleLower.includes('0b3') ||
-        styleLower.includes('0e3') ||
-        styleLower.includes('1a4') ||
-        styleLower.includes('104') ||
-        styleLower.includes('2b1f') ||
-        styleLower.includes('3d2e') ||
-        styleLower.includes('2818')
-      ))
+    // Only target elements that look like heroes:
+    // 1. Has gradient with green colors
+    // 2. Has hero-like padding (80px or 64px)
+    var isHero = (
+      styleLower.includes('gradient') &&
+      (styleLower.includes('padding:80px') || styleLower.includes('padding:64px') || styleLower.includes('padding: 80px') || styleLower.includes('padding: 64px'))
     );
     
-    if (hasGreenGradient) {
-      // Apply dark gradient
+    // Also check for .vat-hero class
+    if (el.classList.contains('vat-hero')) {
+      isHero = true;
+    }
+    
+    var hasGreenGradient = (
+      styleLower.includes('#0f2b') ||
+      styleLower.includes('#0a3d') ||
+      styleLower.includes('#0d28')
+    );
+    
+    if (isHero && hasGreenGradient) {
       el.style.setProperty('background', darkGradient, 'important');
       el.style.position = 'relative';
       
-      // Add grid overlay if not present
       if (!el.querySelector('.hero-grid-overlay')) {
         var grid = document.createElement('div');
         grid.className = 'hero-grid-overlay';
@@ -62,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         el.insertBefore(grid, el.firstChild);
       }
       
-      // Ensure content stays above grid
       Array.from(el.children).forEach(function(child) {
         if (!child.classList.contains('hero-grid-overlay')) {
           var childPos = child.style.position;
