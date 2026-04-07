@@ -22,6 +22,42 @@
 //LOAD LC CONFIG TO DEFINE FRAMEWORK
 require_once ("livecanvas/configuration.php");
 
+// ENQUEUE PRECISION FINANCE OVERRIDE CSS (loads LAST to override everything)
+add_action('wp_enqueue_scripts', function() {
+    wp_enqueue_style(
+        'precision-finance-override',
+        get_stylesheet_directory_uri() . '/precision-finance-override.css',
+        array(), // no dependencies, loads after all other styles
+        filemtime(get_stylesheet_directory() . '/precision-finance-override.css'),
+        'all'
+    );
+}, 9999); // Very high priority to load LAST
+
+// BLOCK ALL GOOGLE FONTS - China/Baidu SEO Compatibility
+add_action('wp_enqueue_scripts', function() {
+    // Dequeue any Google Fonts that might be enqueued
+    global $wp_styles;
+    if (isset($wp_styles->registered)) {
+        foreach ($wp_styles->registered as $handle => $style) {
+            if (isset($style->src) && (
+                strpos($style->src, 'fonts.googleapis.com') !== false ||
+                strpos($style->src, 'fonts.gstatic.com') !== false
+            )) {
+                wp_dequeue_style($handle);
+                wp_deregister_style($handle);
+            }
+        }
+    }
+}, 9998);
+
+// Block Google Fonts at the source level
+add_filter('style_loader_src', function($src) {
+    if (strpos($src, 'fonts.googleapis.com') !== false || strpos($src, 'fonts.gstatic.com') !== false) {
+        return false;
+    }
+    return $src;
+}, 9999);
+
 // DE-ENQUEUE PARENT THEME BOOTSTRAP JS BUNDLE
 add_action( 'wp_print_scripts', function(){
     wp_dequeue_script( 'bootstrap5' );
