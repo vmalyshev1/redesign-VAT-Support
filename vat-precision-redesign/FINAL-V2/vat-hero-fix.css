@@ -1,0 +1,77 @@
+/*
+ * VAT.SUPPORT - Hero & Font Consistency Fix
+ * ==========================================
+ * This CSS makes all service page heroes match the homepage design
+ * NO GOOGLE FONTS - China/Baidu SEO friendly
+ */
+
+/* ══════════════════════════════════════════════════════════════
+   OVERRIDE SERVICE PAGE HEROES (.vat-hero)
+   Changes green gradient to dark slate/teal like homepage
+   ══════════════════════════════════════════════════════════════ */
+
+/* Target all .vat-hero elements and override inline background */
+.vat-hero,
+[class*="-lp"] .vat-hero,
+.vat-amazon-fba-lp .vat-hero,
+.vat-b2b-lp .vat-hero,
+.vat-shopify-lp .vat-hero,
+.vat-ebay-lp .vat-hero,
+.vat-woocommerce-lp .vat-hero,
+div[class*="vat-"][class*="-lp"] > .vat-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #042f2e 50%, #0f172a 100%) !important;
+  position: relative !important;
+}
+
+/* Add grid pattern to service page heroes */
+.vat-hero::before,
+[class*="-lp"] .vat-hero::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px) !important;
+  background-size: 60px 60px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* Ensure hero content stays above the grid */
+.vat-hero > *,
+[class*="-lp"] .vat-hero > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   FONT CONSISTENCY - System fonts for China SEO
+   ══════════════════════════════════════════════════════════════ */
+
+/* Override any Google Fonts with system fonts */
+body,
+.vat-amazon-fba-lp,
+.vat-b2b-lp,
+[class*="vat-"][class*="-lp"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6,
+.vat-hero-title,
+[class*="-lp"] h1,
+[class*="-lp"] h2,
+[class*="-lp"] h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Italic/serif for emphasis */
+h1 em, h2 em, h3 em,
+.vat-hero-title em,
+.hero-section h1 em {
+  font-family: Georgia, "Songti SC", "SimSun", "Times New Roman", serif !important;
+  font-style: italic !important;
+}
