@@ -918,23 +918,37 @@ select:focus {
 
 /* ══════════════════════════════════════════════════════════════
    ALL PAGES HERO - Consistent Dark Gradient + Grid Design
+   Forces override of WordPress inline styles
    ══════════════════════════════════════════════════════════════ */
-.wp-block-cover,
-.wp-block-cover.has-background-dim {
+
+/* Hide WordPress background overlay completely */
+.wp-block-cover__background,
+.wp-block-cover .wp-block-cover__background,
+.wp-block-cover span.has-background-dim,
+.wp-block-cover .has-background-dim,
+.wp-block-cover[style*="background"] .wp-block-cover__background {
+  display: none !important;
+  opacity: 0 !important;
+  background: none !important;
+}
+
+/* Main cover block - apply our gradient */
+.wp-block-cover {
   position: relative !important;
-  background: linear-gradient(135deg, var(--slate-900) 0%, var(--teal-950) 50%, var(--slate-900) 100%) !important;
   overflow: hidden !important;
 }
 
-/* Override any inline background color/image from WordPress */
-.wp-block-cover .has-background-dim,
-.wp-block-cover .wp-block-cover__background {
-  background: transparent !important;
-  opacity: 1 !important;
+/* Apply dark gradient using ::before to beat inline styles */
+.wp-block-cover::before {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(135deg, #0f172a 0%, #042f2e 50%, #0f172a 100%) !important;
+  z-index: 0 !important;
 }
 
-/* Grid pattern for all hero sections */
-.wp-block-cover::before {
+/* Grid pattern overlay */
+.wp-block-cover::after {
   content: '' !important;
   position: absolute !important;
   inset: 0 !important;
@@ -946,22 +960,23 @@ select:focus {
   z-index: 1 !important;
 }
 
-/* Accent orb for all hero sections */
-.wp-block-cover::after {
+/* Ensure all content stays above the gradient and grid */
+.wp-block-cover > *,
+.wp-block-cover .wp-block-cover__inner-container,
+.wp-block-cover__inner-container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Accent orb - add via inner container */
+.wp-block-cover .wp-block-cover__inner-container::before {
   content: '' !important;
-  position: absolute !important;
+  position: fixed !important;
   width: 600px !important;
   height: 600px !important;
   background: radial-gradient(circle, rgba(20,184,166,0.15) 0%, transparent 70%) !important;
   top: -200px !important;
   right: -200px !important;
   pointer-events: none !important;
-  z-index: 1 !important;
-}
-
-/* Ensure content stays above grid */
-.wp-block-cover > *,
-.wp-block-cover .wp-block-cover__inner-container {
-  position: relative !important;
-  z-index: 2 !important;
+  z-index: 0 !important;
 }
