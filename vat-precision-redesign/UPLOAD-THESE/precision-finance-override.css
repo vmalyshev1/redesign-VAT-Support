@@ -62,10 +62,29 @@
    ══════════════════════════════════════════════════════════════ */
 
 /* ══════════════════════════════════════════════════════════════
+   GLOBAL FONT OVERRIDE - Consistent Typography Site-Wide
+   Works for China (PingFang, Microsoft YaHei) + Worldwide
+   ══════════════════════════════════════════════════════════════ */
+
+/* Force system fonts on EVERYTHING */
+*,
+*::before,
+*::after {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Specific serif for italic emphasis only */
+h1 em, h2 em, h3 em, h4 em, h5 em, h6 em,
+.hero em, .hero-headline em, .section-title em,
+em.serif, .font-serif {
+  font-family: Georgia, "Songti SC", "SimSun", "Times New Roman", serif !important;
+}
+
+/* ══════════════════════════════════════════════════════════════
    BASE RESETS & TYPOGRAPHY
    ══════════════════════════════════════════════════════════════ */
 body {
-  font-family: var(--font-sans) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   color: var(--foreground) !important;
   background: var(--background) !important;
   line-height: 1.6 !important;
@@ -74,18 +93,52 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-sans) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   font-weight: 600 !important;
   line-height: 1.2 !important;
   color: var(--foreground) !important;
 }
 
+/* All text elements */
+p, span, a, li, td, th, label, input, textarea, select, button,
+.wp-block-paragraph, .wp-block-list, .wp-block-button__link,
+div, article, section, header, footer, nav, aside, main {
+  font-family: inherit !important;
+}
+
 /* Italic emphasis uses serif */
 h1 em, h2 em, h3 em {
-  font-family: var(--font-serif) !important;
+  font-family: Georgia, "Songti SC", "SimSun", "Times New Roman", serif !important;
   font-style: italic !important;
   font-weight: 400 !important;
 }
+
+/* WordPress & Plugin Font Overrides */
+.wp-block-heading, .wp-block-paragraph, .wp-block-list,
+.wp-block-quote, .wp-block-pullquote, .wp-block-verse,
+.wp-block-table, .wp-block-button, .wp-block-cover,
+.entry-content, .entry-title, .entry-summary,
+.widget, .widget-title, .sidebar,
+.comment-body, .comment-author,
+.woocommerce *, .elementor *, .wpforms-form *,
+[class*="block-"], [class*="wp-block-"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Menu items */
+.navbar-nav, .nav-link, .dropdown-menu, .dropdown-item,
+.menu, .menu-item, .menu-item a,
+#main-menu, #main-menu a {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+/* Footer */
+footer, footer *, .site-footer, .site-footer *,
+#footer, #footer * {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+
+
 
 /* ══════════════════════════════════════════════════════════════
    NAVBAR - Sticky Glass Blur
