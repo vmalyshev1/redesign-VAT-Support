@@ -33,7 +33,7 @@
 }
 
 /* ============================================
-   GRID PATTERN - ONLY for specific hero classes
+   SUBTLE GRID PATTERN - barely visible
    ============================================ */
 
 .vat-hero::before,
@@ -45,9 +45,9 @@
   right: 0;
   bottom: 0;
   background-image: 
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 80px 80px;
   pointer-events: none;
   z-index: 0;
 }
