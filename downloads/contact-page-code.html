@@ -1,0 +1,448 @@
+<style>
+.contact-page {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.contact-hero {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0d9488 100%);
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.contact-hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.map-section {
+  padding: 60px 20px;
+  background: #f8fafc;
+}
+
+.map-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.map-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+.interactive-map {
+  position: relative;
+  background: #e2e8f0;
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+.map-svg {
+  width: 100%;
+  height: 400px;
+}
+
+.country-path {
+  fill: #cbd5e1;
+  stroke: #94a3b8;
+  stroke-width: 1;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.country-path:hover,
+.country-path.active {
+  fill: #0d9488;
+  stroke: #0f766e;
+  stroke-width: 2;
+}
+
+.map-marker {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.map-marker:hover {
+  transform: scale(1.2);
+}
+
+.map-marker.active circle {
+  fill: #dc2626;
+  r: 10;
+}
+
+.office-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .office-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.office-card {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.office-card:hover,
+.office-card.active {
+  border-color: #0d9488;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(13,148,136,0.2);
+}
+
+.office-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.office-flag {
+  font-size: 1.75rem;
+}
+
+.office-card .office-type {
+  color: #0d9488;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+
+.office-card address {
+  font-style: normal;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.office-card .contact-info {
+  border-top: 1px solid #e2e8f0;
+  padding-top: 16px;
+}
+
+.office-card .contact-info a {
+  display: block;
+  color: #0d9488;
+  text-decoration: none;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.office-card .contact-info a:hover {
+  text-decoration: underline;
+}
+
+.contact-form-section {
+  padding: 80px 20px;
+  background: white;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 24px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0d9488;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13,148,136,0.3);
+}
+
+@media (max-width: 768px) {
+  .contact-hero h1 {
+    font-size: 2rem;
+  }
+  .contact-hero p {
+    font-size: 1rem;
+  }
+  .map-title, .form-title {
+    font-size: 1.5rem;
+  }
+  .interactive-map {
+    padding: 20px;
+  }
+  .map-svg {
+    height: 300px;
+  }
+}
+</style>
+
+<div class="contact-page">
+  
+  <div class="contact-hero">
+    <h1>Get in Touch</h1>
+    <p>Our global team of VAT specialists is ready to assist you with your compliance needs across Europe and Asia.</p>
+  </div>
+
+  <div class="map-section">
+    <div class="map-container">
+      <h2 class="map-title">Our Global Offices</h2>
+      
+      <div class="interactive-map">
+        <svg class="map-svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+          <!-- Background -->
+          <rect fill="#e2e8f0" width="800" height="400" rx="8"/>
+          
+          <!-- Simplified Europe/Asia landmass -->
+          <path class="country-path" id="europe-landmass" d="M100,180 Q150,120 250,140 L280,130 Q320,120 350,140 L380,135 Q420,130 450,150 L500,145 Q550,140 600,160 L650,155 Q700,150 750,180 L750,280 Q700,300 650,290 L600,295 Q550,300 500,285 L450,290 Q400,295 350,280 L300,285 Q250,290 200,275 L150,280 Q100,290 100,250 Z"/>
+          
+          <!-- UK outline -->
+          <path class="country-path" id="uk" data-office="uk" d="M180,160 Q175,145 185,135 L195,130 Q205,125 210,135 L215,150 Q220,165 210,175 L200,180 Q185,185 180,175 Z"/>
+          
+          <!-- Czech Republic outline -->
+          <path class="country-path" id="czech" data-office="czech" d="M340,170 Q335,160 345,155 L360,150 Q375,148 385,158 L390,170 Q392,180 380,185 L365,188 Q350,190 345,180 Z"/>
+          
+          <!-- China/Beijing region -->
+          <path class="country-path" id="china" data-office="beijing" d="M580,170 Q560,150 590,130 L640,125 Q690,120 720,150 L730,180 Q735,210 710,235 L670,250 Q630,260 600,240 L575,215 Q555,195 580,170 Z"/>
+          
+          <!-- UK Marker -->
+          <g class="map-marker" id="marker-uk" data-office="uk">
+            <circle cx="195" cy="155" r="8" fill="#0d9488" stroke="white" stroke-width="2"/>
+            <circle cx="195" cy="155" r="4" fill="white"/>
+          </g>
+          
+          <!-- Czech Marker -->
+          <g class="map-marker" id="marker-czech" data-office="czech">
+            <circle cx="365" cy="168" r="8" fill="#0d9488" stroke="white" stroke-width="2"/>
+            <circle cx="365" cy="168" r="4" fill="white"/>
+          </g>
+          
+          <!-- Beijing Marker -->
+          <g class="map-marker" id="marker-beijing" data-office="beijing">
+            <circle cx="650" cy="175" r="8" fill="#0d9488" stroke="white" stroke-width="2"/>
+            <circle cx="650" cy="175" r="4" fill="white"/>
+          </g>
+          
+          <!-- Labels -->
+          <text x="195" y="200" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">UK</text>
+          <text x="365" y="210" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Czech Republic</text>
+          <text x="650" y="220" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="600">Beijing</text>
+        </svg>
+      </div>
+
+      <div class="office-cards">
+        
+        <div class="office-card" data-office="uk">
+          <h3><span class="office-flag">🇬🇧</span> United Kingdom</h3>
+          <div class="office-type">European Headquarters</div>
+          <address>
+            123 Business Street<br>
+            London, EC1A 1BB<br>
+            United Kingdom
+          </address>
+          <div class="contact-info">
+            <a href="tel:+441onal234567890">+44 (0) 123 456 7890</a>
+            <a href="mailto:uk@vat.support">uk@vat.support</a>
+          </div>
+        </div>
+
+        <div class="office-card" data-office="czech">
+          <h3><span class="office-flag">🇨🇿</span> Czech Republic</h3>
+          <div class="office-type">EU Operations Center</div>
+          <address>
+            Václavské náměstí 1<br>
+            110 00 Praha 1<br>
+            Czech Republic
+          </address>
+          <div class="contact-info">
+            <a href="tel:+420123456789">+420 123 456 789</a>
+            <a href="mailto:cz@vat.support">cz@vat.support</a>
+          </div>
+        </div>
+
+        <div class="office-card" data-office="beijing">
+          <h3><span class="office-flag">🇨🇳</span> Beijing</h3>
+          <div class="office-type">Asia-Pacific Hub</div>
+          <address>
+            朝阳区建国路88号<br>
+            SOHO现代城<br>
+            北京市 100022
+          </address>
+          <div class="contact-info">
+            <a href="tel:+861012345678">+86 10 1234 5678</a>
+            <a href="mailto:china@vat.support">china@vat.support</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form-section">
+    <div class="form-container">
+      <h2 class="form-title">Send Us a Message</h2>
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input type="text" id="company" name="company" placeholder="Your company">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="office">Preferred Office</label>
+          <select id="office" name="office">
+            <option value="">Select an office...</option>
+            <option value="uk">United Kingdom</option>
+            <option value="czech">Czech Republic</option>
+            <option value="beijing">Beijing, China</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  const cards = document.querySelectorAll('.office-card');
+  const markers = document.querySelectorAll('.map-marker');
+  const countries = document.querySelectorAll('.country-path[data-office]');
+
+  function setActive(office) {
+    cards.forEach(c => c.classList.toggle('active', c.dataset.office === office));
+    markers.forEach(m => m.classList.toggle('active', m.dataset.office === office));
+    countries.forEach(c => c.classList.toggle('active', c.dataset.office === office));
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => setActive(card.dataset.office));
+    card.addEventListener('mouseleave', () => setActive(null));
+    card.addEventListener('click', () => setActive(card.dataset.office));
+  });
+
+  markers.forEach(marker => {
+    marker.addEventListener('mouseenter', () => setActive(marker.dataset.office));
+    marker.addEventListener('mouseleave', () => setActive(null));
+    marker.addEventListener('click', () => setActive(marker.dataset.office));
+  });
+
+  countries.forEach(country => {
+    country.addEventListener('mouseenter', () => setActive(country.dataset.office));
+    country.addEventListener('mouseleave', () => setActive(null));
+    country.addEventListener('click', () => setActive(country.dataset.office));
+  });
+})();
+</script>
