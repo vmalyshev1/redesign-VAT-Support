@@ -19,12 +19,42 @@ function vat_get_schedule_call_url() {
     if ( function_exists('pll_current_language') ) {
         $lang = pll_current_language();
         if ( $lang === 'ru' ) {
-            return '/ru/%d0%b7%d0%b0%d0%bf%d0%b8%d1%81%d1%8c-%d0%bd%d0%b0-%d0%b7%d0%b2%d0%be%d0%bd%d0%be%d0%ba/';
+            return '/ru/%d0%bf%d0%be%d0%b4%d0%b4%d0%b5%d1%80%d0%b6%d0%ba%d0%b0-%d0%bd%d0%b4%d1%81-%d0%b0%d0%b4%d0%b0%d0%bf%d1%82%d0%b8%d1%80%d0%be%d0%b2%d0%b0%d0%bd%d0%bd%d0%b0%d1%8f-%d0%ba-%d0%b2%d0%b0%d1%88%d0%b5%d0%bc/';
         } elseif ( $lang === 'zh' ) {
-            return '/zh/%e5%b7%b2%e5%ae%89%e6%8e%92%e9%80%9a%e8%af%9d/';
+            return '/zh/%e9%87%8f%e8%ba%ab%e5%ae%9a%e5%88%b6%e7%9a%84%e5%a2%9e%e5%80%bc%e7%a8%8e%e6%94%af%e6%8c%81/';
         }
     }
     return '/schedule-a-call/';
+}
+
+/**
+ * Helper function to get translated "Get Started" button text
+ */
+function vat_get_started_text() {
+    if ( function_exists('pll_current_language') ) {
+        $lang = pll_current_language();
+        if ( $lang === 'ru' ) {
+            return 'Начать';
+        } elseif ( $lang === 'zh' ) {
+            return '开始使用';
+        }
+    }
+    return 'Get Started';
+}
+
+/**
+ * Helper function to get translated "Log in" button text
+ */
+function vat_get_login_text() {
+    if ( function_exists('pll_current_language') ) {
+        $lang = pll_current_language();
+        if ( $lang === 'ru' ) {
+            return 'Войти';
+        } elseif ( $lang === 'zh' ) {
+            return '登录';
+        }
+    }
+    return 'Log in';
 }
 
 /**
@@ -84,7 +114,6 @@ function vat_get_home_url() {
                             'menu_class' => '',
                             'fallback_cb' => '__return_false',
                             'items_wrap' => '<ul id="%1$s" class="navbar-nav %2$s">%3$s</ul>',
-                            //'depth' => 1, // No dropdowns
                             'walker' => new bootstrap_5_wp_nav_menu_walker()
                         )
                     );
@@ -93,8 +122,8 @@ function vat_get_home_url() {
                 
                 <!-- Desktop CTA Buttons -->
                 <div class="d-none d-lg-flex gap-2">
-                    <a href="https://portal.vat.support" class="btn btn-outline-primary">Log in</a>
-                    <a href="<?php echo esc_url(vat_get_schedule_call_url()); ?>" class="btn btn-primary">Get Started</a>
+                    <a href="https://portal.vat.support" class="btn btn-outline-primary"><?php echo esc_html(vat_get_login_text()); ?></a>
+                    <a href="<?php echo esc_url(vat_get_schedule_call_url()); ?>" class="btn btn-primary"><?php echo esc_html(vat_get_started_text()); ?></a>
                 </div>
             </div>
         </nav>
@@ -122,7 +151,7 @@ function vat_get_home_url() {
                             'menu_class' => 'offcanvas-menu-list',
                             'fallback_cb' => '__return_false',
                             'items_wrap' => '<ul id="%1$s-mobile" class="%2$s">%3$s</ul>',
-                            'depth' => 2, // Support one level of submenus
+                            'depth' => 2,
                             'walker' => new WP_Bootstrap_Navwalker_Simple()
                         )
                     );
@@ -131,8 +160,8 @@ function vat_get_home_url() {
 
                 <!-- Mobile CTA Buttons -->
                 <div class="offcanvas-cta">
-                    <a href="https://portal.vat.support" class="btn btn-outline-primary w-100 mb-2">Log in</a>
-                    <a href="<?php echo esc_url(vat_get_schedule_call_url()); ?>" class="btn btn-primary w-100">Get Started</a>
+                    <a href="https://portal.vat.support" class="btn btn-outline-primary w-100 mb-2"><?php echo esc_html(vat_get_login_text()); ?></a>
+                    <a href="<?php echo esc_url(vat_get_schedule_call_url()); ?>" class="btn btn-primary w-100"><?php echo esc_html(vat_get_started_text()); ?></a>
                 </div>
             </div>
         </div>
