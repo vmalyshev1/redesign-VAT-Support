@@ -1,0 +1,384 @@
+<!--
+  GLOBAL VAT/GST/SALES TAX RATES PAGE - CHINESE (SIMPLIFIED)
+  No Google Fonts (Baidu-compatible)
+  Brand: VAT Support
+-->
+<style>
+.py-5.py-xl-6.bg-light-subtle{display:none!important}
+.col-12.py-5{padding-top:0!important;padding-bottom:0!important}
+
+.vat-rates-page{
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;
+  color:#0f172a;-webkit-font-smoothing:antialiased;line-height:1.6;
+}
+.vat-rates-page *{box-sizing:border-box}
+.vat-rates-page .inner{max-width:1100px;margin:0 auto;padding:0 20px}
+
+.vat-rates-page .hero{
+  background:linear-gradient(135deg,#0f172a 0%,#042f2e 50%,#0f172a 100%);
+  padding:80px 20px 60px;position:relative;overflow:hidden;
+}
+.vat-rates-page .hero-glow{
+  position:absolute;top:-100px;right:-100px;width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(13,148,136,0.2) 0%,transparent 70%);pointer-events:none;
+}
+.vat-rates-page .hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:50px;padding:6px 16px;margin-bottom:24px;
+}
+.vat-rates-page .hero-badge span{color:#94a3b8;font-size:13px;font-weight:500;letter-spacing:0.5px}
+.vat-rates-page .hero h1{color:#fff;font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.15;margin:0 0 16px}
+.vat-rates-page .hero h1 em{color:#5eead4;font-style:italic;font-family:Georgia,serif}
+.vat-rates-page .hero p{color:#cbd5e1;font-size:17px;line-height:1.7;max-width:700px;margin:0 0 12px}
+.vat-rates-page .hero .note{color:#fde68a;font-size:14px;margin:0 0 28px}
+.vat-rates-page .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+.vat-rates-page .stats{background:#0d9488;padding:24px 20px}
+.vat-rates-page .stats-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;
+}
+.vat-rates-page .stats-grid div strong{display:block;color:#fff;font-size:26px;font-weight:800}
+.vat-rates-page .stats-grid div span{color:rgba(255,255,255,0.85);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+.vat-rates-page .section{padding:70px 20px}
+.vat-rates-page .section--gray{background:#f8fafc}
+.vat-rates-page .section--white{background:#fff}
+.vat-rates-page .section-label{color:#0d9488;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.vat-rates-page .section h2{color:#0f172a;font-size:clamp(24px,3vw,32px);font-weight:800;margin:0 0 16px}
+.vat-rates-page .section p.intro{color:#64748b;font-size:16px;max-width:700px;margin:0 auto 32px}
+
+.vat-rates-page .btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;
+  text-decoration:none;cursor:pointer;border:none;
+}
+.vat-rates-page .btn-teal{background:#0d9488;color:#fff!important}
+.vat-rates-page .btn-teal:hover{background:#0f766e}
+.vat-rates-page .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff!important}
+.vat-rates-page .btn-white{background:#fff;color:#0d9488!important}
+
+.vat-rates-page .filter-card{
+  background:#fff;border:1px solid #e2e8f0;border-radius:16px;
+  padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.vat-rates-page .filter-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;margin-bottom:16px;
+}
+.vat-rates-page .filter-field label{
+  display:block;font-size:11px;font-weight:700;color:#64748b;
+  text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;
+}
+.vat-rates-page .filter-field input,
+.vat-rates-page .filter-field select{
+  width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:8px;
+  padding:10px 12px;font-size:14px;color:#0f172a;
+}
+.vat-rates-page .filter-field input:focus,
+.vat-rates-page .filter-field select:focus{outline:none;border-color:#0d9488}
+.vat-rates-page .filter-actions{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.vat-rates-page .filter-reset{
+  background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;
+  padding:10px 18px;font-size:13px;font-weight:600;color:#334155;cursor:pointer;
+}
+.vat-rates-page .filter-reset:hover{background:#e2e8f0}
+.vat-rates-page .filter-count{color:#64748b;font-size:14px}
+
+.vat-rates-page .table-wrap{
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border:1px solid #e2e8f0;border-radius:12px;margin-top:16px;
+}
+.vat-rates-page table{width:100%;border-collapse:collapse;min-width:850px;background:#fff;font-size:14px}
+.vat-rates-page thead th{
+  text-align:left;padding:12px 14px;background:#f8fafc;color:#64748b;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;
+  border-bottom:1px solid #e2e8f0;white-space:nowrap;position:sticky;top:0;
+}
+.vat-rates-page tbody td{padding:14px;border-top:1px solid #f1f5f9;vertical-align:top;color:#334155}
+.vat-rates-page tbody tr:hover{background:#fafafa}
+.vat-rates-page .pill{
+  display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;
+  border-radius:999px;background:#ecfdf5;color:#0f766e;border:1px solid #a7f3d0;margin-top:6px;
+}
+.vat-rates-page .iso{
+  font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;
+  background:#f1f5f9;padding:4px 8px;border-radius:6px;
+}
+.vat-rates-page .no-results{display:none;color:#64748b;font-size:14px;padding:20px;text-align:center}
+
+.vat-rates-page .cta{background:#0d9488;padding:60px 20px;text-align:center}
+.vat-rates-page .cta h2{color:#fff;font-size:clamp(24px,3vw,32px);font-weight:800;margin:0 0 12px}
+.vat-rates-page .cta p{color:rgba(255,255,255,0.9);font-size:16px;margin:0 0 28px}
+
+.vat-rates-page .faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px}
+.vat-rates-page .faq-item h3{color:#0f172a;font-size:16px;font-weight:700;margin:0 0 10px}
+.vat-rates-page .faq-item p{color:#64748b;font-size:15px;line-height:1.7;margin:0}
+
+.vat-rates-page .related{
+  background:#f8f9fa;border-left:4px solid #0d9488;padding:20px 24px;
+  margin:40px 0 0;border-radius:4px;
+}
+.vat-rates-page .related h3{margin:0 0 12px;font-size:14px;color:#0d9488;text-transform:uppercase;letter-spacing:1px}
+.vat-rates-page .related a{color:#0d9488;text-decoration:none}
+.vat-rates-page .related a:hover{text-decoration:underline}
+
+@media(max-width:900px){.vat-rates-page .stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .vat-rates-page .hero{padding:50px 20px 40px}
+  .vat-rates-page .stats-grid{grid-template-columns:1fr 1fr}
+  .vat-rates-page .section{padding:50px 20px}
+  .vat-rates-page .hero-btns{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<div class="vat-rates-page">
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="inner" style="position:relative;z-index:2">
+    <div class="hero-badge"><span>更新于2026年3月</span></div>
+    <h1>全球增值税、GST<br><em>税率及申报截止日期</em></h1>
+    <p>比较31个司法管辖区的间接税税率和申报要求：全部27个欧盟成员国、英国、美国、加拿大和澳大利亚。数据由VAT Support从官方政府来源整理。</p>
+    <p class="note"><strong>注意：</strong>本页面为参考摘要，不构成税务建议。税率和截止日期会变化，请务必以官方来源为准。</p>
+    <div class="hero-btns">
+      <a class="btn btn-teal" href="https://vat.support/zh/schedule-a-call/">预约咨询</a>
+      <a class="btn btn-ghost" href="https://vat.support/zh/calculator/">增值税计算器</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div><strong>31</strong><span>司法管辖区</span></div>
+    <div><strong>27</strong><span>欧盟国家</span></div>
+    <div><strong>VAT · GST</strong><span>含美国销售税</span></div>
+    <div><strong>2026</strong><span>最新数据</span></div>
+  </div>
+</div>
+
+<section class="section section--gray">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="section-label">交互式参考</div>
+      <h2>按地区、税种和税率筛选</h2>
+      <p class="intro">使用筛选器缩小结果范围。搜索匹配国家名称、代码和关键词。</p>
+    </div>
+    
+    <div class="filter-card">
+      <div class="filter-grid">
+        <div class="filter-field">
+          <label>搜索</label>
+          <input type="search" id="vatSearchZh" placeholder="国家、代码、税率..." />
+        </div>
+        <div class="filter-field">
+          <label>地区</label>
+          <select id="vatRegionZh">
+            <option value="all">所有地区</option>
+            <option value="eu">欧盟（27国）</option>
+            <option value="europe">英国</option>
+            <option value="americas">美洲（美国、加拿大）</option>
+            <option value="oceania">大洋洲（澳大利亚）</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>税种</label>
+          <select id="vatTypeZh">
+            <option value="all">所有类型</option>
+            <option value="vat">增值税 (VAT)</option>
+            <option value="gst">GST</option>
+            <option value="sales">美国销售税</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>申报频率</label>
+          <select id="vatFilingZh">
+            <option value="all">全部</option>
+            <option value="monthly">每月</option>
+            <option value="quarterly">每季度</option>
+            <option value="annual">每年</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>标准税率</label>
+          <select id="vatRateZh">
+            <option value="all">所有税率</option>
+            <option value="low">低于19%</option>
+            <option value="mid">19% - 22%</option>
+            <option value="high">高于22%</option>
+            <option value="na">因地区而异（美、加）</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button type="button" class="filter-reset" id="vatResetZh">重置筛选</button>
+        <span class="filter-count">显示 <span id="vatCountZh">31</span> 个司法管辖区</span>
+      </div>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>国家</th>
+              <th>代码</th>
+              <th>税种</th>
+              <th>标准税率</th>
+              <th>优惠税率</th>
+              <th>申报</th>
+              <th>截止日期</th>
+            </tr>
+          </thead>
+          <tbody id="vatTableZh">
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="austria 奥地利 at 20 19 10 13"><td><strong>奥地利</strong><br><span class="pill">欧盟</span></td><td><span class="iso">AT</span></td><td>增值税</td><td>20%</td><td>10%, 13%</td><td>月、季、年</td><td>次月15日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="belgium 比利时 be 21 6 12"><td><strong>比利时</strong><br><span class="pill">欧盟</span></td><td><span class="iso">BE</span></td><td>增值税</td><td>21%</td><td>6%, 12%</td><td>月、季</td><td>次月20日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="mid" data-kw="bulgaria 保加利亚 bg 20 9"><td><strong>保加利亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">BG</span></td><td>增值税</td><td>20%</td><td>9%</td><td>每月</td><td>次月14日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="croatia 克罗地亚 hr 25 5 13"><td><strong>克罗地亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">HR</span></td><td>增值税</td><td>25%</td><td>5%, 13%</td><td>月、季</td><td>次月最后一天</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="quarterly" data-rate="mid" data-kw="cyprus 塞浦路斯 cy 19 5 9"><td><strong>塞浦路斯</strong><br><span class="pill">欧盟</span></td><td><span class="iso">CY</span></td><td>增值税</td><td>19%</td><td>5%, 9%</td><td>每季</td><td>季后第2月10日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="czech republic 捷克 cz 21 12"><td><strong>捷克</strong><br><span class="pill">欧盟</span></td><td><span class="iso">CZ</span></td><td>增值税</td><td>21%</td><td>12%</td><td>月、季</td><td>期末后25天</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="denmark 丹麦 dk 25"><td><strong>丹麦</strong><br><span class="pill">欧盟</span></td><td><span class="iso">DK</span></td><td>增值税</td><td>25%</td><td>无</td><td>月、季、半年</td><td>次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="high" data-kw="estonia 爱沙尼亚 ee 24 9 13"><td><strong>爱沙尼亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">EE</span></td><td>增值税</td><td>24%</td><td>9%, 13%</td><td>每月</td><td>次月20日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="finland 芬兰 fi 25.5 10 14"><td><strong>芬兰</strong><br><span class="pill">欧盟</span></td><td><span class="iso">FI</span></td><td>增值税</td><td>25.5%</td><td>10%, 14%</td><td>月、季、年</td><td>次次月12日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="france 法国 fr 20 5.5 10 2.1"><td><strong>法国</strong><br><span class="pill">欧盟</span></td><td><span class="iso">FR</span></td><td>增值税</td><td>20%</td><td>5.5%, 10%</td><td>月、季、年</td><td>次月15-24日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="germany 德国 de 19 7"><td><strong>德国</strong><br><span class="pill">欧盟</span></td><td><span class="iso">DE</span></td><td>增值税</td><td>19%</td><td>7%</td><td>月、季、年</td><td>次月10日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="greece 希腊 gr 24 6 13"><td><strong>希腊</strong><br><span class="pill">欧盟</span></td><td><span class="iso">GR</span></td><td>增值税</td><td>24%</td><td>6%, 13%</td><td>月、季</td><td>次月最后工作日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="hungary 匈牙利 hu 27 5 18"><td><strong>匈牙利</strong><br><span class="pill">欧盟</span></td><td><span class="iso">HU</span></td><td>增值税</td><td>27%</td><td>5%, 18%</td><td>月、季、年</td><td>次月20日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="high" data-kw="ireland 爱尔兰 ie 23 9 13.5"><td><strong>爱尔兰</strong><br><span class="pill">欧盟</span></td><td><span class="iso">IE</span></td><td>增值税</td><td>23%</td><td>9%, 13.5%</td><td>月、双月</td><td>次月23日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="italy 意大利 it 22 4 5 10"><td><strong>意大利</strong><br><span class="pill">欧盟</span></td><td><span class="iso">IT</span></td><td>增值税</td><td>22%</td><td>4%, 5%, 10%</td><td>月、季</td><td>次次月16日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="latvia 拉脱维亚 lv 21 5 12"><td><strong>拉脱维亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">LV</span></td><td>增值税</td><td>21%</td><td>5%, 12%</td><td>月、季</td><td>次月20日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="lithuania 立陶宛 lt 21 5 12"><td><strong>立陶宛</strong><br><span class="pill">欧盟</span></td><td><span class="iso">LT</span></td><td>增值税</td><td>21%</td><td>5%, 12%</td><td>月、季</td><td>次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="low" data-kw="luxembourg 卢森堡 lu 17 3 8 14"><td><strong>卢森堡</strong><br><span class="pill">欧盟</span></td><td><span class="iso">LU</span></td><td>增值税</td><td>17%</td><td>3%, 8%, 14%</td><td>月、季、年</td><td>次月15日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="quarterly" data-rate="low" data-kw="malta 马耳他 mt 18 5 7 12"><td><strong>马耳他</strong><br><span class="pill">欧盟</span></td><td><span class="iso">MT</span></td><td>增值税</td><td>18%</td><td>5%, 7%</td><td>每季</td><td>季末后45天</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="netherlands 荷兰 nl 21 9"><td><strong>荷兰</strong><br><span class="pill">欧盟</span></td><td><span class="iso">NL</span></td><td>增值税</td><td>21%</td><td>9%</td><td>月、季</td><td>次月最后一天</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="poland 波兰 pl 23 5 8"><td><strong>波兰</strong><br><span class="pill">欧盟</span></td><td><span class="iso">PL</span></td><td>增值税</td><td>23%</td><td>5%, 8%</td><td>月、季</td><td>次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="portugal 葡萄牙 pt 23 6 13"><td><strong>葡萄牙</strong><br><span class="pill">欧盟</span></td><td><span class="iso">PT</span></td><td>增值税</td><td>23%</td><td>6%, 13%</td><td>月、季</td><td>次次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="romania 罗马尼亚 ro 19 9"><td><strong>罗马尼亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">RO</span></td><td>增值税</td><td>19%</td><td>9%</td><td>月、季、年</td><td>次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="slovakia 斯洛伐克 sk 23 5 19"><td><strong>斯洛伐克</strong><br><span class="pill">欧盟</span></td><td><span class="iso">SK</span></td><td>增值税</td><td>23%</td><td>5%, 19%</td><td>月、季</td><td>次月25日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="slovenia 斯洛文尼亚 si 22 5 9.5"><td><strong>斯洛文尼亚</strong><br><span class="pill">欧盟</span></td><td><span class="iso">SI</span></td><td>增值税</td><td>22%</td><td>5%, 9.5%</td><td>月、季</td><td>次月最后工作日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="spain 西班牙 es 21 4 10"><td><strong>西班牙</strong><br><span class="pill">欧盟</span></td><td><span class="iso">ES</span></td><td>增值税</td><td>21%</td><td>4%, 10%</td><td>月、季</td><td>次月20日</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="sweden 瑞典 se 25 6 12"><td><strong>瑞典</strong><br><span class="pill">欧盟</span></td><td><span class="iso">SE</span></td><td>增值税</td><td>25%</td><td>6%, 12%</td><td>月、季、年</td><td>次次月12日</td></tr>
+            <tr data-region="europe" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="united kingdom 英国 uk gb britain 20 5"><td><strong>英国</strong><br><span class="pill">欧洲</span></td><td><span class="iso">GB</span></td><td>增值税</td><td>20%</td><td>5%</td><td>月、季、年</td><td>1个月+7天</td></tr>
+            <tr data-region="americas" data-type="gst" data-filing="monthly quarterly annual" data-rate="na" data-kw="canada 加拿大 ca gst hst pst qst 5 13 15"><td><strong>加拿大</strong><br><span class="pill">美洲</span></td><td><span class="iso">CA</span></td><td>GST/HST</td><td>GST 5%</td><td>HST 13-15%（各省）</td><td>月、季、年</td><td>期末后1个月</td></tr>
+            <tr data-region="americas" data-type="sales" data-filing="monthly quarterly" data-rate="na" data-kw="united states 美国 usa us america sales use tax state"><td><strong>美国</strong><br><span class="pill">美洲</span></td><td><span class="iso">US</span></td><td>销售税</td><td>2.9% - 7.25%</td><td>+ 地方税（各异）</td><td>月、季（各州）</td><td>各州不同</td></tr>
+            <tr data-region="oceania" data-type="gst" data-filing="monthly quarterly" data-rate="low" data-kw="australia 澳大利亚 au oceania 10"><td><strong>澳大利亚</strong><br><span class="pill">大洋洲</span></td><td><span class="iso">AU</span></td><td>GST</td><td>10%</td><td>零税率类别</td><td>月、季</td><td>次月21日</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="no-results" id="noResultsZh">没有符合筛选条件的司法管辖区。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="inner" style="max-width:900px">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="section-label">常见问题</div>
+      <h2>增值税和GST参考FAQ</h2>
+    </div>
+    <div class="faq-item">
+      <h3>这些数据来自哪里？</h3>
+      <p>税率和申报信息由VAT Support从官方政府税务机构网站和经过验证的出版物整理而来，截至2026年初为最新数据。</p>
+    </div>
+    <div class="faq-item">
+      <h3>为什么美国显示税率范围？</h3>
+      <p>美国没有联邦增值税。销售税和使用税由各州和地方政府征收，税率和规则因司法管辖区而异。州税率从2.9%（科罗拉多州）到7.25%（加利福尼亚州）不等，另加地方税。</p>
+    </div>
+    <div class="faq-item">
+      <h3>加拿大只有一种GST税率吗？</h3>
+      <p>联邦GST为5%，但各省可能会增加HST（合计13-15%）、QST（魁北克9.975%）或PST（不列颠哥伦比亚7%、曼尼托巴7%、萨斯喀彻温6%）。请务必查看适用的省级税率。</p>
+    </div>
+    <div class="faq-item">
+      <h3>你们能帮助进行增值税申报吗？</h3>
+      <p>可以的——VAT Support在欧洲和其他司法管辖区处理注册和申报业务。<a href="https://vat.support/zh/schedule-a-call/" style="color:#0d9488;font-weight:600">预约免费咨询</a>讨论您的需求。</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <h2>需要增值税合规帮助？</h2>
+    <p>我们的团队在50多个国家处理注册、申报和税率审核。</p>
+    <a class="btn btn-white" href="https://vat.support/zh/schedule-a-call/">预约免费咨询</a>
+  </div>
+</section>
+
+<section class="section section--white" style="padding-top:0">
+  <div class="inner">
+    <div class="related">
+      <h3>相关服务</h3>
+      <p><a href="https://vat.support/zh/eu-vat/">欧盟增值税</a> · <a href="https://vat.support/zh/registrations/">增值税注册</a> · <a href="https://vat.support/zh/calculator/">增值税计算器</a> · <a href="https://vat.support/zh/ioss/">IOSS</a> · <a href="https://vat.support/zh/vat-rate-review/">税率审核</a></p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var searchEl = document.getElementById('vatSearchZh');
+  var regionEl = document.getElementById('vatRegionZh');
+  var typeEl = document.getElementById('vatTypeZh');
+  var filingEl = document.getElementById('vatFilingZh');
+  var rateEl = document.getElementById('vatRateZh');
+  var resetEl = document.getElementById('vatResetZh');
+  var countEl = document.getElementById('vatCountZh');
+  var noResultsEl = document.getElementById('noResultsZh');
+  var tbody = document.getElementById('vatTableZh');
+  
+  if(!tbody) return;
+  
+  function applyFilters(){
+    var q = (searchEl.value || '').toLowerCase().trim();
+    var region = regionEl.value;
+    var type = typeEl.value;
+    var filing = filingEl.value;
+    var rate = rateEl.value;
+    
+    var rows = tbody.querySelectorAll('tr');
+    var shown = 0;
+    
+    for(var i = 0; i < rows.length; i++){
+      var row = rows[i];
+      var ok = true;
+      
+      if(region !== 'all' && row.getAttribute('data-region') !== region) ok = false;
+      if(ok && type !== 'all' && row.getAttribute('data-type') !== type) ok = false;
+      if(ok && filing !== 'all'){
+        var rowFiling = (row.getAttribute('data-filing') || '').toLowerCase();
+        if(rowFiling.indexOf(filing) === -1) ok = false;
+      }
+      if(ok && rate !== 'all' && row.getAttribute('data-rate') !== rate) ok = false;
+      if(ok && q){
+        var kw = (row.getAttribute('data-kw') || '').toLowerCase();
+        var text = row.textContent.toLowerCase();
+        if(kw.indexOf(q) === -1 && text.indexOf(q) === -1) ok = false;
+      }
+      
+      row.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    }
+    
+    countEl.textContent = shown;
+    noResultsEl.style.display = shown === 0 ? 'block' : 'none';
+  }
+  
+  function resetFilters(){
+    searchEl.value = '';
+    regionEl.value = 'all';
+    typeEl.value = 'all';
+    filingEl.value = 'all';
+    rateEl.value = 'all';
+    applyFilters();
+  }
+  
+  searchEl.addEventListener('input', applyFilters);
+  searchEl.addEventListener('keyup', applyFilters);
+  regionEl.addEventListener('change', applyFilters);
+  typeEl.addEventListener('change', applyFilters);
+  filingEl.addEventListener('change', applyFilters);
+  rateEl.addEventListener('change', applyFilters);
+  resetEl.addEventListener('click', resetFilters);
+  
+  applyFilters();
+})();
+</script>
