@@ -1,0 +1,384 @@
+<!--
+  GLOBAL VAT/GST/SALES TAX RATES PAGE - ENGLISH
+  No Google Fonts (Baidu-compatible)
+  Brand: VAT Support
+-->
+<style>
+.py-5.py-xl-6.bg-light-subtle{display:none!important}
+.col-12.py-5{padding-top:0!important;padding-bottom:0!important}
+
+.vat-rates-page{
+  font-family:system-ui,-apple-system,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;
+  color:#0f172a;-webkit-font-smoothing:antialiased;line-height:1.6;
+}
+.vat-rates-page *{box-sizing:border-box}
+.vat-rates-page .inner{max-width:1100px;margin:0 auto;padding:0 20px}
+
+.vat-rates-page .hero{
+  background:linear-gradient(135deg,#0f172a 0%,#042f2e 50%,#0f172a 100%);
+  padding:80px 20px 60px;position:relative;overflow:hidden;
+}
+.vat-rates-page .hero-glow{
+  position:absolute;top:-100px;right:-100px;width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(13,148,136,0.2) 0%,transparent 70%);pointer-events:none;
+}
+.vat-rates-page .hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:50px;padding:6px 16px;margin-bottom:24px;
+}
+.vat-rates-page .hero-badge span{color:#94a3b8;font-size:13px;font-weight:500;letter-spacing:0.5px}
+.vat-rates-page .hero h1{color:#fff;font-size:clamp(28px,5vw,48px);font-weight:800;line-height:1.15;margin:0 0 16px}
+.vat-rates-page .hero h1 em{color:#5eead4;font-style:italic;font-family:Georgia,serif}
+.vat-rates-page .hero p{color:#cbd5e1;font-size:17px;line-height:1.7;max-width:700px;margin:0 0 12px}
+.vat-rates-page .hero .note{color:#fde68a;font-size:14px;margin:0 0 28px}
+.vat-rates-page .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+
+.vat-rates-page .stats{background:#0d9488;padding:24px 20px}
+.vat-rates-page .stats-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;
+}
+.vat-rates-page .stats-grid div strong{display:block;color:#fff;font-size:26px;font-weight:800}
+.vat-rates-page .stats-grid div span{color:rgba(255,255,255,0.85);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+
+.vat-rates-page .section{padding:70px 20px}
+.vat-rates-page .section--gray{background:#f8fafc}
+.vat-rates-page .section--white{background:#fff}
+.vat-rates-page .section-label{color:#0d9488;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.vat-rates-page .section h2{color:#0f172a;font-size:clamp(24px,3vw,32px);font-weight:800;margin:0 0 16px}
+.vat-rates-page .section p.intro{color:#64748b;font-size:16px;max-width:700px;margin:0 auto 32px}
+
+.vat-rates-page .btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 26px;border-radius:8px;font-weight:600;font-size:15px;
+  text-decoration:none;cursor:pointer;border:none;
+}
+.vat-rates-page .btn-teal{background:#0d9488;color:#fff!important}
+.vat-rates-page .btn-teal:hover{background:#0f766e}
+.vat-rates-page .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff!important}
+.vat-rates-page .btn-white{background:#fff;color:#0d9488!important}
+
+.vat-rates-page .filter-card{
+  background:#fff;border:1px solid #e2e8f0;border-radius:16px;
+  padding:28px;box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.vat-rates-page .filter-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:14px;margin-bottom:16px;
+}
+.vat-rates-page .filter-field label{
+  display:block;font-size:11px;font-weight:700;color:#64748b;
+  text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;
+}
+.vat-rates-page .filter-field input,
+.vat-rates-page .filter-field select{
+  width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:8px;
+  padding:10px 12px;font-size:14px;color:#0f172a;
+}
+.vat-rates-page .filter-field input:focus,
+.vat-rates-page .filter-field select:focus{outline:none;border-color:#0d9488}
+.vat-rates-page .filter-actions{display:flex;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.vat-rates-page .filter-reset{
+  background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;
+  padding:10px 18px;font-size:13px;font-weight:600;color:#334155;cursor:pointer;
+}
+.vat-rates-page .filter-reset:hover{background:#e2e8f0}
+.vat-rates-page .filter-count{color:#64748b;font-size:14px}
+
+.vat-rates-page .table-wrap{
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  border:1px solid #e2e8f0;border-radius:12px;margin-top:16px;
+}
+.vat-rates-page table{width:100%;border-collapse:collapse;min-width:850px;background:#fff;font-size:14px}
+.vat-rates-page thead th{
+  text-align:left;padding:12px 14px;background:#f8fafc;color:#64748b;
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;
+  border-bottom:1px solid #e2e8f0;white-space:nowrap;position:sticky;top:0;
+}
+.vat-rates-page tbody td{padding:14px;border-top:1px solid #f1f5f9;vertical-align:top;color:#334155}
+.vat-rates-page tbody tr:hover{background:#fafafa}
+.vat-rates-page .pill{
+  display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;
+  border-radius:999px;background:#ecfdf5;color:#0f766e;border:1px solid #a7f3d0;margin-top:6px;
+}
+.vat-rates-page .iso{
+  font-family:ui-monospace,Consolas,monospace;font-size:12px;font-weight:700;
+  background:#f1f5f9;padding:4px 8px;border-radius:6px;
+}
+.vat-rates-page .no-results{display:none;color:#64748b;font-size:14px;padding:20px;text-align:center}
+
+.vat-rates-page .cta{background:#0d9488;padding:60px 20px;text-align:center}
+.vat-rates-page .cta h2{color:#fff;font-size:clamp(24px,3vw,32px);font-weight:800;margin:0 0 12px}
+.vat-rates-page .cta p{color:rgba(255,255,255,0.9);font-size:16px;margin:0 0 28px}
+
+.vat-rates-page .faq-item{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;margin-bottom:16px}
+.vat-rates-page .faq-item h3{color:#0f172a;font-size:16px;font-weight:700;margin:0 0 10px}
+.vat-rates-page .faq-item p{color:#64748b;font-size:15px;line-height:1.7;margin:0}
+
+.vat-rates-page .related{
+  background:#f8f9fa;border-left:4px solid #0d9488;padding:20px 24px;
+  margin:40px 0 0;border-radius:4px;
+}
+.vat-rates-page .related h3{margin:0 0 12px;font-size:14px;color:#0d9488;text-transform:uppercase;letter-spacing:1px}
+.vat-rates-page .related a{color:#0d9488;text-decoration:none}
+.vat-rates-page .related a:hover{text-decoration:underline}
+
+@media(max-width:900px){.vat-rates-page .stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){
+  .vat-rates-page .hero{padding:50px 20px 40px}
+  .vat-rates-page .stats-grid{grid-template-columns:1fr 1fr}
+  .vat-rates-page .section{padding:50px 20px}
+  .vat-rates-page .hero-btns{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<div class="vat-rates-page">
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="inner" style="position:relative;z-index:2">
+    <div class="hero-badge"><span>Updated March 2026</span></div>
+    <h1>Global VAT, GST &amp; Sales Tax<br><em>Rates &amp; Filing Deadlines</em></h1>
+    <p>Compare indirect tax rates and filing requirements across 31 jurisdictions: all 27 EU member states, the UK, United States, Canada, and Australia. Compiled by VAT Support from official government sources.</p>
+    <p class="note"><strong>Note:</strong> This is a reference summary—not tax advice. Rates and deadlines change; always confirm with official sources.</p>
+    <div class="hero-btns">
+      <a class="btn btn-teal" href="https://vat.support/schedule-a-call/">Schedule a Call</a>
+      <a class="btn btn-ghost" href="https://vat.support/calculator/">VAT Calculator</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-grid">
+    <div><strong>31</strong><span>Jurisdictions</span></div>
+    <div><strong>27</strong><span>EU Countries</span></div>
+    <div><strong>VAT · GST</strong><span>Plus US Sales Tax</span></div>
+    <div><strong>2026</strong><span>Latest Data</span></div>
+  </div>
+</div>
+
+<section class="section section--gray">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:32px">
+      <div class="section-label">Interactive Reference</div>
+      <h2>Filter by Region, Tax Type &amp; Rate</h2>
+      <p class="intro">Use the filters to narrow results. Search matches country names, codes, and keywords.</p>
+    </div>
+    
+    <div class="filter-card">
+      <div class="filter-grid">
+        <div class="filter-field">
+          <label>Search</label>
+          <input type="search" id="vatSearch" placeholder="Country, code, rate..." />
+        </div>
+        <div class="filter-field">
+          <label>Region</label>
+          <select id="vatRegion">
+            <option value="all">All Regions</option>
+            <option value="eu">EU (27 countries)</option>
+            <option value="europe">UK</option>
+            <option value="americas">Americas (US, Canada)</option>
+            <option value="oceania">Oceania (Australia)</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>Tax Type</label>
+          <select id="vatType">
+            <option value="all">All Types</option>
+            <option value="vat">VAT</option>
+            <option value="gst">GST</option>
+            <option value="sales">US Sales Tax</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>Filing Frequency</label>
+          <select id="vatFiling">
+            <option value="all">All</option>
+            <option value="monthly">Monthly</option>
+            <option value="quarterly">Quarterly</option>
+            <option value="annual">Annual</option>
+          </select>
+        </div>
+        <div class="filter-field">
+          <label>Standard Rate</label>
+          <select id="vatRate">
+            <option value="all">All Rates</option>
+            <option value="low">Under 19%</option>
+            <option value="mid">19% - 22%</option>
+            <option value="high">Over 22%</option>
+            <option value="na">Varies (US, CA)</option>
+          </select>
+        </div>
+      </div>
+      <div class="filter-actions">
+        <button type="button" class="filter-reset" id="vatReset">Reset Filters</button>
+        <span class="filter-count"><span id="vatCount">31</span> jurisdictions shown</span>
+      </div>
+      
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Code</th>
+              <th>Tax</th>
+              <th>Standard Rate</th>
+              <th>Reduced Rates</th>
+              <th>Filing</th>
+              <th>Deadline</th>
+            </tr>
+          </thead>
+          <tbody id="vatTable">
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="austria at 20 19 10 13"><td><strong>Austria</strong><br><span class="pill">EU</span></td><td><span class="iso">AT</span></td><td>VAT</td><td>20%</td><td>10%, 13%</td><td>Monthly, Quarterly, Annual</td><td>15th of 2nd month after period</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="belgium be 21 6 12"><td><strong>Belgium</strong><br><span class="pill">EU</span></td><td><span class="iso">BE</span></td><td>VAT</td><td>21%</td><td>6%, 12%</td><td>Monthly, Quarterly</td><td>20th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="mid" data-kw="bulgaria bg 20 9"><td><strong>Bulgaria</strong><br><span class="pill">EU</span></td><td><span class="iso">BG</span></td><td>VAT</td><td>20%</td><td>9%</td><td>Monthly</td><td>14th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="croatia hr 25 5 13"><td><strong>Croatia</strong><br><span class="pill">EU</span></td><td><span class="iso">HR</span></td><td>VAT</td><td>25%</td><td>5%, 13%</td><td>Monthly, Quarterly</td><td>Last day of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="quarterly" data-rate="mid" data-kw="cyprus cy 19 5 9"><td><strong>Cyprus</strong><br><span class="pill">EU</span></td><td><span class="iso">CY</span></td><td>VAT</td><td>19%</td><td>5%, 9%</td><td>Quarterly</td><td>10th of 2nd month after quarter</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="czech republic czechia cz 21 12"><td><strong>Czech Republic</strong><br><span class="pill">EU</span></td><td><span class="iso">CZ</span></td><td>VAT</td><td>21%</td><td>12%</td><td>Monthly, Quarterly</td><td>25 days after period end</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="denmark dk 25"><td><strong>Denmark</strong><br><span class="pill">EU</span></td><td><span class="iso">DK</span></td><td>VAT</td><td>25%</td><td>None</td><td>Monthly, Quarterly, Half-yearly</td><td>25th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="high" data-kw="estonia ee 24 9 13"><td><strong>Estonia</strong><br><span class="pill">EU</span></td><td><span class="iso">EE</span></td><td>VAT</td><td>24%</td><td>9%, 13%</td><td>Monthly</td><td>20th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="finland fi 25.5 10 14"><td><strong>Finland</strong><br><span class="pill">EU</span></td><td><span class="iso">FI</span></td><td>VAT</td><td>25.5%</td><td>10%, 14%</td><td>Monthly, Quarterly, Annual</td><td>12th of 2nd month after period</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="france fr 20 5.5 10 2.1"><td><strong>France</strong><br><span class="pill">EU</span></td><td><span class="iso">FR</span></td><td>VAT</td><td>20%</td><td>5.5%, 10%</td><td>Monthly, Quarterly, Annual</td><td>15th-24th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="germany de 19 7"><td><strong>Germany</strong><br><span class="pill">EU</span></td><td><span class="iso">DE</span></td><td>VAT</td><td>19%</td><td>7%</td><td>Monthly, Quarterly, Annual</td><td>10th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="greece gr 24 6 13"><td><strong>Greece</strong><br><span class="pill">EU</span></td><td><span class="iso">GR</span></td><td>VAT</td><td>24%</td><td>6%, 13%</td><td>Monthly, Quarterly</td><td>Last business day of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="hungary hu 27 5 18"><td><strong>Hungary</strong><br><span class="pill">EU</span></td><td><span class="iso">HU</span></td><td>VAT</td><td>27%</td><td>5%, 18%</td><td>Monthly, Quarterly, Annual</td><td>20th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly" data-rate="high" data-kw="ireland ie 23 9 13.5"><td><strong>Ireland</strong><br><span class="pill">EU</span></td><td><span class="iso">IE</span></td><td>VAT</td><td>23%</td><td>9%, 13.5%</td><td>Monthly, Bi-monthly</td><td>23rd of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="italy it 22 4 5 10"><td><strong>Italy</strong><br><span class="pill">EU</span></td><td><span class="iso">IT</span></td><td>VAT</td><td>22%</td><td>4%, 5%, 10%</td><td>Monthly, Quarterly</td><td>16th of 2nd month after period</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="latvia lv 21 5 12"><td><strong>Latvia</strong><br><span class="pill">EU</span></td><td><span class="iso">LV</span></td><td>VAT</td><td>21%</td><td>5%, 12%</td><td>Monthly, Quarterly</td><td>20th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="lithuania lt 21 5 12"><td><strong>Lithuania</strong><br><span class="pill">EU</span></td><td><span class="iso">LT</span></td><td>VAT</td><td>21%</td><td>5%, 12%</td><td>Monthly, Quarterly</td><td>25th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="low" data-kw="luxembourg lu 17 3 8 14"><td><strong>Luxembourg</strong><br><span class="pill">EU</span></td><td><span class="iso">LU</span></td><td>VAT</td><td>17%</td><td>3%, 8%, 14%</td><td>Monthly, Quarterly, Annual</td><td>15th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="quarterly" data-rate="low" data-kw="malta mt 18 5 7 12"><td><strong>Malta</strong><br><span class="pill">EU</span></td><td><span class="iso">MT</span></td><td>VAT</td><td>18%</td><td>5%, 7%</td><td>Quarterly</td><td>45 days after quarter end</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="netherlands holland nl 21 9"><td><strong>Netherlands</strong><br><span class="pill">EU</span></td><td><span class="iso">NL</span></td><td>VAT</td><td>21%</td><td>9%</td><td>Monthly, Quarterly</td><td>Last day of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="poland pl 23 5 8"><td><strong>Poland</strong><br><span class="pill">EU</span></td><td><span class="iso">PL</span></td><td>VAT</td><td>23%</td><td>5%, 8%</td><td>Monthly, Quarterly</td><td>25th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="portugal pt 23 6 13"><td><strong>Portugal</strong><br><span class="pill">EU</span></td><td><span class="iso">PT</span></td><td>VAT</td><td>23%</td><td>6%, 13%</td><td>Monthly, Quarterly</td><td>25th of 2nd month after period</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="romania ro 19 9"><td><strong>Romania</strong><br><span class="pill">EU</span></td><td><span class="iso">RO</span></td><td>VAT</td><td>19%</td><td>9%</td><td>Monthly, Quarterly, Annual</td><td>25th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="high" data-kw="slovakia sk 23 5 19"><td><strong>Slovakia</strong><br><span class="pill">EU</span></td><td><span class="iso">SK</span></td><td>VAT</td><td>23%</td><td>5%, 19%</td><td>Monthly, Quarterly</td><td>25th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="slovenia si 22 5 9.5"><td><strong>Slovenia</strong><br><span class="pill">EU</span></td><td><span class="iso">SI</span></td><td>VAT</td><td>22%</td><td>5%, 9.5%</td><td>Monthly, Quarterly</td><td>Last working day of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly" data-rate="mid" data-kw="spain es 21 4 10"><td><strong>Spain</strong><br><span class="pill">EU</span></td><td><span class="iso">ES</span></td><td>VAT</td><td>21%</td><td>4%, 10%</td><td>Monthly, Quarterly</td><td>20th of following month</td></tr>
+            <tr data-region="eu" data-type="vat" data-filing="monthly quarterly annual" data-rate="high" data-kw="sweden se 25 6 12"><td><strong>Sweden</strong><br><span class="pill">EU</span></td><td><span class="iso">SE</span></td><td>VAT</td><td>25%</td><td>6%, 12%</td><td>Monthly, Quarterly, Annual</td><td>12th of 2nd month after period</td></tr>
+            <tr data-region="europe" data-type="vat" data-filing="monthly quarterly annual" data-rate="mid" data-kw="united kingdom uk gb britain 20 5"><td><strong>United Kingdom</strong><br><span class="pill">Europe</span></td><td><span class="iso">GB</span></td><td>VAT</td><td>20%</td><td>5%</td><td>Monthly, Quarterly, Annual</td><td>1 month + 7 days after period</td></tr>
+            <tr data-region="americas" data-type="gst" data-filing="monthly quarterly annual" data-rate="na" data-kw="canada ca gst hst pst qst 5 13 15"><td><strong>Canada</strong><br><span class="pill">Americas</span></td><td><span class="iso">CA</span></td><td>GST/HST</td><td>GST 5%</td><td>HST 13-15% (by province)</td><td>Monthly, Quarterly, Annual</td><td>1 month after period end</td></tr>
+            <tr data-region="americas" data-type="sales" data-filing="monthly quarterly" data-rate="na" data-kw="united states usa us america sales use tax state"><td><strong>United States</strong><br><span class="pill">Americas</span></td><td><span class="iso">US</span></td><td>Sales Tax</td><td>2.9% - 7.25%</td><td>+ local taxes (varies)</td><td>Monthly, Quarterly (by state)</td><td>Varies by state</td></tr>
+            <tr data-region="oceania" data-type="gst" data-filing="monthly quarterly" data-rate="low" data-kw="australia au oceania 10"><td><strong>Australia</strong><br><span class="pill">Oceania</span></td><td><span class="iso">AU</span></td><td>GST</td><td>10%</td><td>Zero-rated categories</td><td>Monthly, Quarterly</td><td>21st of following month</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="no-results" id="noResults">No jurisdictions match your filters.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section--white">
+  <div class="inner" style="max-width:900px">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="section-label">Common Questions</div>
+      <h2>VAT &amp; GST Reference FAQ</h2>
+    </div>
+    <div class="faq-item">
+      <h3>Where does this data come from?</h3>
+      <p>The rates and filing information are compiled by VAT Support from official government tax authority websites and verified publications, current as of early 2026.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Why does the US show a range for standard rate?</h3>
+      <p>The United States has no federal VAT. Sales and use taxes are imposed at state and local levels, with rates and rules varying significantly by jurisdiction. State rates range from 2.9% (Colorado) to 7.25% (California), plus additional local taxes.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Does Canada have one GST rate?</h3>
+      <p>Federal GST is 5%, but provinces may add HST (combined 13-15%), QST (Quebec 9.975%), or PST (BC 7%, Manitoba 7%, Saskatchewan 6%). Always check the applicable provincial rate.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can you help with VAT filings?</h3>
+      <p>Yes — VAT Support handles registrations and filings across Europe and other jurisdictions. <a href="https://vat.support/schedule-a-call/" style="color:#0d9488;font-weight:600">Book a free call</a> to discuss your needs.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="inner">
+    <h2>Need Help With VAT Compliance?</h2>
+    <p>Our team handles registrations, filings, and rate reviews across 50+ countries.</p>
+    <a class="btn btn-white" href="https://vat.support/schedule-a-call/">Schedule a Free Call</a>
+  </div>
+</section>
+
+<section class="section section--white" style="padding-top:0">
+  <div class="inner">
+    <div class="related">
+      <h3>Related Services</h3>
+      <p><a href="https://vat.support/eu-vat/">EU VAT</a> · <a href="https://vat.support/registrations/">VAT Registrations</a> · <a href="https://vat.support/calculator/">VAT Calculator</a> · <a href="https://vat.support/ioss/">IOSS</a> · <a href="https://vat.support/vat-rate-review/">Rate Review</a></p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var searchEl = document.getElementById('vatSearch');
+  var regionEl = document.getElementById('vatRegion');
+  var typeEl = document.getElementById('vatType');
+  var filingEl = document.getElementById('vatFiling');
+  var rateEl = document.getElementById('vatRate');
+  var resetEl = document.getElementById('vatReset');
+  var countEl = document.getElementById('vatCount');
+  var noResultsEl = document.getElementById('noResults');
+  var tbody = document.getElementById('vatTable');
+  
+  if(!tbody) return;
+  
+  function applyFilters(){
+    var q = (searchEl.value || '').toLowerCase().trim();
+    var region = regionEl.value;
+    var type = typeEl.value;
+    var filing = filingEl.value;
+    var rate = rateEl.value;
+    
+    var rows = tbody.querySelectorAll('tr');
+    var shown = 0;
+    
+    for(var i = 0; i < rows.length; i++){
+      var row = rows[i];
+      var ok = true;
+      
+      if(region !== 'all' && row.getAttribute('data-region') !== region) ok = false;
+      if(ok && type !== 'all' && row.getAttribute('data-type') !== type) ok = false;
+      if(ok && filing !== 'all'){
+        var rowFiling = (row.getAttribute('data-filing') || '').toLowerCase();
+        if(rowFiling.indexOf(filing) === -1) ok = false;
+      }
+      if(ok && rate !== 'all' && row.getAttribute('data-rate') !== rate) ok = false;
+      if(ok && q){
+        var kw = (row.getAttribute('data-kw') || '').toLowerCase();
+        var text = row.textContent.toLowerCase();
+        if(kw.indexOf(q) === -1 && text.indexOf(q) === -1) ok = false;
+      }
+      
+      row.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    }
+    
+    countEl.textContent = shown;
+    noResultsEl.style.display = shown === 0 ? 'block' : 'none';
+  }
+  
+  function resetFilters(){
+    searchEl.value = '';
+    regionEl.value = 'all';
+    typeEl.value = 'all';
+    filingEl.value = 'all';
+    rateEl.value = 'all';
+    applyFilters();
+  }
+  
+  searchEl.addEventListener('input', applyFilters);
+  searchEl.addEventListener('keyup', applyFilters);
+  regionEl.addEventListener('change', applyFilters);
+  typeEl.addEventListener('change', applyFilters);
+  filingEl.addEventListener('change', applyFilters);
+  rateEl.addEventListener('change', applyFilters);
+  resetEl.addEventListener('click', resetFilters);
+  
+  applyFilters();
+})();
+</script>
